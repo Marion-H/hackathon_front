@@ -1,12 +1,12 @@
 import React from "react";
 
 import "./App.css";
-import { Button } from "reactstrap";
+import Router from "./Router";
 
 function App() {
   return (
     <div className="App">
-      <Button className="generalButton"></Button>
+      <Router />
     </div>
   );
 }
