@@ -1,25 +1,8 @@
-* {
-  font-family: "Lato", sans-serif;
-  text-align: center;
-}
-
-h1 {
-  font-size: 30px;
-  font-weight: 900;
-}
-
-h2 {
+.titreDeux {
   font-size: 25px;
   font-weight: 900;
   text-align: center;
-}
-
-h3 {
-  font-size: 18px;
-}
-
-h4 {
-  font-size: 16px;
+  text-transform: uppercase;
 }
 
 .generalButton {
@@ -38,8 +21,6 @@ h4 {
   text-decoration: none;
 }
 
-.cardDoctolib {
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.2);
+.lienSimple {
+  color: #0596de;
 }
