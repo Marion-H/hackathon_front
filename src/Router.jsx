@@ -1,46 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import OnboardingPres from "./components/onboarding/OnboardingPres";
+import OnboardingDash from "./components/onboarding/OnboardingDash";
+import OnboardingRecompense from "./components/onboarding/OnboardingRecompence";
 import Connexion from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
 
 export default function MyRouter() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route exact path="/" component={Connexion} />
-          <Route exact path="/dashboard" component={Dashboard} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={OnboardingPres} />
+        <Route path="/etapeDeux" component={OnboardingDash} />
+        <Route path="/etapeTrois" component={OnboardingRecompense} />
+        <Route  path="/connexion" component={Connexion} />
+        <Route  path="/dashboard" component={Dashboard} />
+      </Switch>
     </Router>
   );
 }
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
