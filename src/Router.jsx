@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Connexion from "./components/Register";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 export default function MyRouter() {
   return (
@@ -29,6 +30,7 @@ export default function MyRouter() {
             <Users />
           </Route>
           <Route exact path="/" component={Connexion} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     </Router>
