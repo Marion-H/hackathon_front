@@ -1,5 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Card } from "reactstrap";
+import Citations from "./Citations";
+
+import styles from "./dashboard.module.css";
 
 export default function Dashboard() {
   return (
@@ -12,8 +15,9 @@ export default function Dashboard() {
           lg={{ size: "8", offset: 2 }}
         >
           <Card
+            className="mb-2"
             style={{
-              background: "orange",
+              background: "red",
               height: "200px",
               cursor: "pointer",
               borderRadius: "10px",
@@ -28,17 +32,9 @@ export default function Dashboard() {
           md={{ size: "4", offset: 2 }}
           lg={{ size: "4", offset: 2 }}
         >
-          <Card
-            style={{
-              background: "orange",
-
-              height: "200px",
-              cursor: "pointer",
-              borderRadius: "10px",
-
-              marginTop: "15px",
-            }}
-          ></Card>
+          <Card className={`${styles.citationCard} mt-3`}>
+            <Citations />
+          </Card>
         </Col>
         <Col
           xs={{ size: "6", offset: 0 }}
@@ -47,14 +43,13 @@ export default function Dashboard() {
           lg={{ size: "4", offset: 0 }}
         >
           <Card
+            className="mt-3"
             style={{
-              background: "orange",
+              background: "yellow",
 
               height: "200px",
               cursor: "pointer",
               borderRadius: "10px",
-
-              marginTop: "15px",
             }}
           ></Card>
         </Col>
@@ -67,9 +62,27 @@ export default function Dashboard() {
           lg={{ size: "8", offset: 2 }}
         >
           <Card
+            className="mt-3"
             style={{
               background: "orange",
-              marginTop: "15px",
+              height: "200px",
+              cursor: "pointer",
+              borderRadius: "10px",
+            }}
+          ></Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          xs={{ size: "12", offset: 0 }}
+          sm={{ size: "12", offset: 0 }}
+          md={{ size: "8", offset: 2 }}
+          lg={{ size: "8", offset: 2 }}
+        >
+          <Card
+            className="mt-3"
+            style={{
+              background: "purple",
               height: "200px",
               cursor: "pointer",
               borderRadius: "10px",
