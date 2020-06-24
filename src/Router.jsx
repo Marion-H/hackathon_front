@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Connexion from "./components/Register";
+import Modale from "./ModaleCDS";
 
 export default function MyRouter() {
   return (
@@ -23,7 +24,7 @@ export default function MyRouter() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/about">
-            <About />
+            <Modale />
           </Route>
           <Route path="/users">
             <Users />
@@ -33,10 +34,6 @@ export default function MyRouter() {
       </div>
     </Router>
   );
-}
-
-function About() {
-  return <h2>About</h2>;
 }
 
 function Users() {
