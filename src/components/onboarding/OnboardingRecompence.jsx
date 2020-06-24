@@ -22,7 +22,7 @@ export default function OnboardingRecompense() {
           </Row>
           <Row>
             <Col>
-              <Link to="/register" className={styles.generalButton}>
+              <Link to="/connexion" className={styles.generalButton}>
                 Créer un compte
               </Link>
             </Col>
