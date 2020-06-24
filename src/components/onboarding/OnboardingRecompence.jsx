@@ -10,15 +10,28 @@ export default function OnboardingRecompense() {
     <Container>
       <Row>
         <Col lg={{ size: 6, offset: 3 }}>
-          <img src={illuRewards} alt="illustration récompences" />
-          <h2 className={`${styles.titreDeux} mt-3`}>Etape 1</h2>
-          <p className="my-5">
-            Plus ton suivis sera régulier plus tu accumulera des points et
-            bénéficira de remise sur tes activités et magasins favoris.
-          </p>
-          <Link to="/connexion" className={styles.generalButton}>
-            Créer un compte
-          </Link>
+          <Row>
+            <Col>
+              <img src={illuRewards} alt="illustration récompences" />
+              <h2 className={`${styles.titreDeux} mt-3`}>Etape 3</h2>
+              <p className="my-5">
+                Plus ton suivis sera régulier plus tu accumulera des points et
+                bénéficira de remise sur tes activités et magasins favoris.
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Link to="/register" className={styles.generalButton}>
+                Créer un compte
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/etapeDeux" className={styles.lienSimple}>
+                Retour
+              </Link>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
