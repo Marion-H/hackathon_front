@@ -1,11 +1,30 @@
 .cardStyle1 {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border: 0px !important;
+  border-radius: 0.8rem !important;
 }
 .cardStyle2 {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border: 0px !important;
   background-color: #f86d70 !important;
+  border-radius: 25px;
+  border-radius: 0.8rem !important;
+}
+
+.kg {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.dailyData {
+  font-weight: 900;
+  font-size: 30px;
+  color: #0596de;
+}
+
+.paragrapheRed {
+  padding: 3%;
+  margin: inherit;
 }
 
 .cardDoctor {

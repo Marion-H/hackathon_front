@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 
 import illuReward from "../../img/recompenseDash.svg";
 import Axios from "axios";
+import { IoMdSad } from "react-icons/io";
+import { FiSmile } from "react-icons/fi";
+import { RiEmotionNormalLine } from "react-icons/ri";
 
 export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
@@ -91,45 +94,76 @@ export default function Dashboard(props) {
                   className={DataUuid ? styles.cardStyle1 : styles.cardStyle2}
                 >
                   {DataUuid ? (
-                    <>
+                    <div className="p-2">
                       <Row>
-                        <h2>Ma pathologie : {datas.pathology}</h2>
-                      </Row>
-                      <Row>
-                        <Col>
+                        <Col className="align-self-center">
                           <Row>
-                            <Col>
+                            <Col className="justify-align-center ">
                               <h3>Humeur du jour</h3>
                             </Col>
                           </Row>
                           <Row>
-                            <Col>{datas.dailyDatas[0].mood}</Col>
+                            <Col className="justify-align-center ">
+                              {datas.dailyDatas[0].mood === 1 ? (
+                                <IoMdSad
+                                  size={60}
+                                  color={"red"}
+                                  style={{ opacity: "0.5", border: "solid" }}
+                                />
+                              ) : datas.dailyDatas[0].mood === 2 ? (
+                                <RiEmotionNormalLine
+                                  size={60}
+                                  color={"red"}
+                                  style={{ opacity: "0.5", border: "solid" }}
+                                />
+                              ) : (
+                                <FiSmile size={60} color={"#0596DE"} />
+                              )}
+                            </Col>
                           </Row>
                         </Col>
-                        <Col>
+                        <Col className="align-self-center">
                           <Row>
-                            <Col>
+                            <Col className="justify-align-center ">
                               <h3>Taux de glycémie</h3>
                             </Col>
                           </Row>
                           <Row>
-                            <Col>{datas.dailyDatas[0].bloodSugar}</Col>
+                            <Col className="align-self-center">
+                              <p className={styles.dailyData}>
+                                {datas.dailyDatas[0].bloodSugar}
+                                <span className={styles.kg}>g/L</span>
+                              </p>
+                            </Col>
                           </Row>
                         </Col>
-                        <Col>
+                        <Col className="align-self-center">
                           <Row>
                             <Col>
                               <h3>Weight</h3>
                             </Col>
                           </Row>
                           <Row>
-                            <Col>{datas.dailyDatas[0].weight}</Col>
+                            <Col className="align-self-center">
+                              <p className={styles.dailyData}>
+                                {datas.dailyDatas[0].weight}
+                                <span className={styles.kg}>kg</span>
+                              </p>
+                            </Col>
                           </Row>
                         </Col>
                       </Row>
-                    </>
+                    </div>
                   ) : (
-                    <p>Cliquez ici pour envoyer vos données !</p>
+
+                    <Row>
+                      <Col>
+                        <p className={styles.paragrapheRed}>
+                          Cliquez pour envoyer vos données !
+                        </p>
+                      </Col>
+                    </Row>
+
                   )}
                 </Card>
               </Link>
@@ -145,7 +179,7 @@ export default function Dashboard(props) {
             >
               <Link to="/rewards">
                 <Card
-                  className={`${styles.cardStyle} ${styles.cardReward} justify-content-center mt-3`}
+                  className={`${styles.cardStyle1} ${styles.cardReward} justify-content-center mt-3`}
                 >
                   <img src={illuReward} alt="illustration récompenses" />
                 </Card>
@@ -157,7 +191,7 @@ export default function Dashboard(props) {
               md={{ size: "4", offset: 0 }}
               lg={{ size: "4", offset: 0 }}
             >
-              <Card className={`${styles.cardStyle} mt-3`}></Card>
+              <Card className={`${styles.cardStyle1} mt-3`}></Card>
             </Col>
           </Row>
           <Row>
@@ -168,7 +202,7 @@ export default function Dashboard(props) {
               lg={{ size: "8", offset: 2 }}
             >
               <Card
-                className={`${styles.citationCard} ${styles.cardStyle} mt-3`}
+                className={`${styles.citationCard} ${styles.cardStyle1} mt-3`}
               >
                 <Citations />
               </Card>
