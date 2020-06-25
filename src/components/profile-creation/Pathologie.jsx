@@ -52,7 +52,7 @@ export default function Pathologie() {
               <Fade right>
                 <Row>
                   <Col>
-                    <h3 style={{ textAlign: "center", margin: "10%" }}>
+                    <h3 style={{ textAlign: "center", margin: "5%" }}>
                       Quel pathologie avez vous?
                     </h3>
                   </Col>

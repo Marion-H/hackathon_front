@@ -25,13 +25,15 @@ export default function OnboardingRecompense() {
             </Row>
             <Row>
               <Col>
+                <Link
+                  style={{ display: "block", marginTop: "20px" }}
+                  to="/connexion"
+                  className={styles.generalButton}
+                >
+                  Créer un compte
+                </Link>
                 <Link to="/etapeDeux" className={styles.lienSimple}>
                   Retour
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/connexion" className={styles.generalButton}>
-                  Créer un compte
                 </Link>
               </Col>
             </Row>

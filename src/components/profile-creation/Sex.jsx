@@ -49,7 +49,7 @@ export default function Sex() {
           <Fade right>
             <Row>
               <Col>
-                <h3 style={{ textAlign: "center", margin: "100px 0" }}>
+                <h3 style={{ textAlign: "center", margin: "60px 0" }}>
                   Quel est votre sexe ?
                 </h3>
               </Col>

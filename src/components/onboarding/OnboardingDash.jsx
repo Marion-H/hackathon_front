@@ -25,13 +25,15 @@ export default function OnboardingDash() {
             </Row>
             <Row>
               <Col>
-                <Link to="/" className={styles.lienSimple}>
-                  Retour
-                </Link>
-              </Col>
-              <Col>
                 <Link to="/etapeTrois" className={styles.generalButton}>
                   Continuer
+                </Link>
+                <Link
+                  style={{ display: "block", marginTop: "20px" }}
+                  to="/"
+                  className={styles.lienSimple}
+                >
+                  Retour
                 </Link>
               </Col>
             </Row>

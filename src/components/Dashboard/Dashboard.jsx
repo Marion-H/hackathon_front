@@ -7,7 +7,10 @@ import styles from "./dashboard.module.css";
 import DoctorData from "./DoctorData";
 import { Link } from "react-router-dom";
 
+import illuCheck from "../../img/check.svg";
+import illuPosologie from "../../img/posologie.svg";
 import illuReward from "../../img/recompenseDash.svg";
+
 import Axios from "axios";
 import { IoMdSad } from "react-icons/io";
 import { FiSmile } from "react-icons/fi";
@@ -96,6 +99,11 @@ export default function Dashboard(props) {
                 >
                   {DataUuid ? (
                     <div className="p-2">
+                      <Row>
+                        <Col lg={{ size: 3, offset: 9 }}>
+                          <img src={illuCheck} alt="illustration check" />
+                        </Col>
+                      </Row>
                       <Row>
                         <Col className="align-self-center">
                           <Row>
@@ -194,7 +202,7 @@ export default function Dashboard(props) {
                 <Card
                   className={`${styles.cardReward} ${styles.cardStyle1} mt-3`}
                 >
-                  COUCOU
+                  <img src={illuPosologie} alt="illustration posologie" />
                 </Card>
               </Link>
             </Col>
