@@ -11,7 +11,7 @@ import {
   Button,
 } from "reactstrap";
 import Citations from "./Citations";
-
+import Zoom from "react-reveal/Zoom";
 import styles from "./dashboard.module.css";
 import DoctorData from "./DoctorData";
 
@@ -21,119 +21,123 @@ export default function Dashboard(props) {
 
   const toggle = () => setModal(!modal);
   return (
-    <Container>
-      <Row>
-        <Col
-          xs={{ size: "12", offset: 0 }}
-          sm={{ size: "12", offset: 0 }}
-          md={{ size: "8", offset: 2 }}
-          lg={{ size: "8", offset: 2 }}
-        >
-          <div>
-            <button
-              className="mb-2"
+    <Zoom left>
+      <Container>
+        <Row>
+          <Col
+            xs={{ size: "12", offset: 0 }}
+            sm={{ size: "12", offset: 0 }}
+            md={{ size: "8", offset: 2 }}
+            lg={{ size: "8", offset: 2 }}
+          >
+            <div>
+              <Card
+                onClick={toggle}
+                className="mt-3"
+                style={{
+                  background: "red",
+
+                  height: "200px",
+                  cursor: "pointer",
+                  borderRadius: "10px",
+                }}
+              ></Card>
+
+              <Modal isOpen={modal} toggle={toggle} className={className}>
+                <ModalHeader toggle={toggle}>Carnet de Santé</ModalHeader>
+                <ModalBody>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onClick={toggle}>
+                    Valider
+                  </Button>{" "}
+                  <Button color="secondary" onClick={toggle}>
+                    Annulé
+                  </Button>
+                </ModalFooter>
+              </Modal>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={{ size: "6", offset: 0 }}
+            sm={{ size: "6", offset: 0 }}
+            md={{ size: "4", offset: 2 }}
+            lg={{ size: "4", offset: 2 }}
+          >
+            <Card className={`${styles.citationCard} mt-3`}></Card>
+          </Col>
+          <Col
+            xs={{ size: "6", offset: 0 }}
+            sm={{ size: "6", offset: 0 }}
+            md={{ size: "4", offset: 0 }}
+            lg={{ size: "4", offset: 0 }}
+          >
+            <Card
+              className="mt-3"
               style={{
-                width: "100%",
-                background: "red",
+                background: "yellow",
+
                 height: "200px",
                 cursor: "pointer",
                 borderRadius: "10px",
               }}
-              onClick={toggle}
-            ></button>
-            <Modal isOpen={modal} toggle={toggle} className={className}>
-              <ModalHeader toggle={toggle}>Carnet de Santé</ModalHeader>
-              <ModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onClick={toggle}>
-                  Valider
-                </Button>{" "}
-                <Button color="secondary" onClick={toggle}>
-                  Annulé
-                </Button>
-              </ModalFooter>
-            </Modal>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          xs={{ size: "6", offset: 0 }}
-          sm={{ size: "6", offset: 0 }}
-          md={{ size: "4", offset: 2 }}
-          lg={{ size: "4", offset: 2 }}
-        >
-          <Card className={`${styles.citationCard} mt-3`}></Card>
-        </Col>
-        <Col
-          xs={{ size: "6", offset: 0 }}
-          sm={{ size: "6", offset: 0 }}
-          md={{ size: "4", offset: 0 }}
-          lg={{ size: "4", offset: 0 }}
-        >
-          <Card
-            className="mt-3"
-            style={{
-              background: "yellow",
-
-              height: "200px",
-              cursor: "pointer",
-              borderRadius: "10px",
-            }}
-          ></Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          xs={{ size: "12", offset: 0 }}
-          sm={{ size: "12", offset: 0 }}
-          md={{ size: "8", offset: 2 }}
-          lg={{ size: "8", offset: 2 }}
-        >
-          <Card
-            className="mt-3"
-            style={{
-              background: "orange",
-              height: "200px",
-              cursor: "pointer",
-              borderRadius: "10px",
-            }}
+            ></Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={{ size: "12", offset: 0 }}
+            sm={{ size: "12", offset: 0 }}
+            md={{ size: "8", offset: 2 }}
+            lg={{ size: "8", offset: 2 }}
           >
-            {" "}
-            <Citations />
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col
-          xs={{ size: "12", offset: 0 }}
-          sm={{ size: "12", offset: 0 }}
-          md={{ size: "8", offset: 2 }}
-          lg={{ size: "8", offset: 2 }}
-        >
-          <Card
-            className="mt-3"
-            style={{
-              background: "lightblue",
-              height: "200px",
-              cursor: "pointer",
-              borderRadius: "10px",
-
-              marginBottom: "20px",
-            }}
+            <Card
+              className="mt-3"
+              style={{
+                background: "orange",
+                height: "200px",
+                cursor: "pointer",
+                borderRadius: "10px",
+              }}
+            >
+              {" "}
+              <Citations />
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={{ size: "12", offset: 0 }}
+            sm={{ size: "12", offset: 0 }}
+            md={{ size: "8", offset: 2 }}
+            lg={{ size: "8", offset: 2 }}
           >
-            <DoctorData />
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            <Card
+              className="mt-3"
+              style={{
+                background: "lightblue",
+                height: "200px",
+                cursor: "pointer",
+                borderRadius: "10px",
+
+                marginBottom: "20px",
+              }}
+            >
+              <DoctorData />
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </Zoom>
   );
 }
