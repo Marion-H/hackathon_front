@@ -11,11 +11,15 @@ h1 {
 h2 {
   font-size: 25px;
   font-weight: 900;
-  text-align: center;
+  padding: 10px;
+  text-decoration: none;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 18px !important;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 10px;
 }
 
 h4 {

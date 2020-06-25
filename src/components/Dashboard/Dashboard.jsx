@@ -11,10 +11,14 @@ import {
   Button,
 } from "reactstrap";
 import Citations from "./Citations";
-import Zoom from "react-reveal/Zoom";
+import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
+import stylesReward from "./rewards.module.css";
+
 import DoctorData from "./DoctorData";
 import { Link } from "react-router-dom";
+
+import illuReward from "../../img/recompense1.svg";
 
 export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
@@ -22,7 +26,7 @@ export default function Dashboard(props) {
 
   const toggle = () => setModal(!modal);
   return (
-    <Zoom left>
+    <Fade>
       <Container>
         <Row>
           <Col
@@ -37,7 +41,6 @@ export default function Dashboard(props) {
                 className="mt-3"
                 style={{
                   background: "red",
-
                   height: "200px",
                   cursor: "pointer",
                   borderRadius: "10px",
@@ -53,7 +56,18 @@ export default function Dashboard(props) {
             md={{ size: "4", offset: 2 }}
             lg={{ size: "4", offset: 2 }}
           >
-            <Card className={`${styles.citationCard} mt-3`}></Card>
+            <Link to="/rewards">
+              <Card
+                className="mt-3"
+                style={{
+                  height: "200px",
+                  cursor: "pointer",
+                  borderRadius: "10px",
+                }}
+              >
+                <img src={illuReward} alt="illustration récompenses" />
+              </Card>
+            </Link>
           </Col>
           <Col
             xs={{ size: "6", offset: 0 }}
@@ -80,16 +94,7 @@ export default function Dashboard(props) {
             md={{ size: "8", offset: 2 }}
             lg={{ size: "8", offset: 2 }}
           >
-            <Card
-              className="mt-3"
-              style={{
-                background: "orange",
-                height: "200px",
-                cursor: "pointer",
-                borderRadius: "10px",
-              }}
-            >
-              {" "}
+            <Card className={`${styles.citationCard} mt-3`}>
               <Citations />
             </Card>
           </Col>
@@ -104,11 +109,10 @@ export default function Dashboard(props) {
             <Card
               className="mt-3"
               style={{
-                background: "lightblue",
+                background: "lightgrey",
                 height: "200px",
                 cursor: "pointer",
                 borderRadius: "10px",
-
                 marginBottom: "20px",
               }}
             >
@@ -117,6 +121,6 @@ export default function Dashboard(props) {
           </Col>
         </Row>
       </Container>
-    </Zoom>
+    </Fade>
   );
 }
