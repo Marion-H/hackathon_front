@@ -1,0 +1,13 @@
+.citationCard {
+  height: 200px;
+  border-radius: 10px;
+}
+
+.phone {
+  margin-top: 50%;
+  height: 60%;
+  width: 80%;
+  border-radius: 20px;
+  background-color: #48b460;
+  border: 1px solid;
+}
