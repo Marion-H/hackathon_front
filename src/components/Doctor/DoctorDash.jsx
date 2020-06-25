@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Fade, Container, Row, Col, Jumbotron, Button } from "reactstrap";
+import {
+  Fade,
+  Container,
+  Row,
+  Col,
+  Jumbotron,
+  Button,
+  Table,
+} from "reactstrap";
 import Axios from "axios";
 
 export default function DoctorDash() {
   const [datas, setDatas] = useState([]);
   const [isLoading, setisLoading] = useState(true);
-  const [uuid, setisuuid] = useState("2ebb0d4c-5c9d-4f3a-9bb1-77aee20ad3f6");
+  const [uuid, setisuuid] = useState("c7092571-68b0-449b-af2d-05ed22a627dc");
 
   useEffect(() => {
     getInfos();
@@ -13,8 +21,7 @@ export default function DoctorDash() {
 
   const getInfos = async () => {
     try {
-      const uuid = "9b31e212-8f62-4b85-8b36-89b2bd069d27";
-      const res = await Axios.get(`http://localhost:8000/patients`);
+      const res = await Axios.get(`http://localhost:8000/patients/alldata`);
       setDatas(res.data);
       setisLoading(false);
     } catch (err) {
@@ -31,25 +38,54 @@ export default function DoctorDash() {
             {datas
               .filter(
                 (patient) =>
-                  patient.DoctorUuid === "2ebb0d4c-5c9d-4f3a-9bb1-77aee20ad3f6"
+                  patient.DoctorUuid ===
+                    "c7092571-68b0-449b-af2d-05ed22a627dc" &&
+                  patient.dailyDatas[2]
               )
               .map((patient) => (
-                <Jumbotron>
-                  <h1 className="display-3">{patient.lastname}</h1>
-                  <p className="lead">
-                    This is a simple hero unit, a simple Jumbotron-style
-                    component for calling extra attention to featured content or
-                    information.
-                  </p>
-                  <hr className="my-2" />
-                  <p>
-                    It uses utility classes for typography and spacing to space
-                    content out within the larger container.
-                  </p>
-                  <p className="lead">
-                    <Button color="primary">Learn More</Button>
-                  </p>
-                </Jumbotron>
+                <Col lg={{ size: 12, offset: 0 }}>
+                  <Jumbotron>
+                    <h1 className="display-3">
+                      {patient.lastname} {patient.firstname}
+                    </h1>
+                    <h3 className="display-3">{patient.pathology}</h3>
+
+                    <Table>
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>bloodSugar</th>
+                          <th>weight</th>
+                          <th>mood</th>
+                          <th>appetite</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{patient.dailyDatas[0].bloodSugar}</td>
+                          <td>{patient.dailyDatas[0].weight}</td>
+                          <td>{patient.dailyDatas[0].mood}</td>
+                          <td>{patient.dailyDatas[0].appetite}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{patient.dailyDatas[1].bloodSugar}</td>
+                          <td>{patient.dailyDatas[1].weight}</td>
+                          <td>{patient.dailyDatas[1].mood}</td>
+                          <td>{patient.dailyDatas[1].appetite}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{patient.dailyDatas[2].bloodSugar}</td>
+                          <td>{patient.dailyDatas[2].weight}</td>
+                          <td>{patient.dailyDatas[2].mood}</td>
+                          <td>{patient.dailyDatas[2].appetite}</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </Jumbotron>
+                </Col>
               ))}
           </Row>
         </Container>
