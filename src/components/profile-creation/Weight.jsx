@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import { Fade } from "react-reveal";
 import style from "./Sex.module.css";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export default function Weight() {
   const [CanGoToNextPage, setCanGoToNextPage] = useState(false);
@@ -52,11 +52,9 @@ export default function Weight() {
         </FormGroup>
         <Row>
           <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Link to="age">
-              <button className={style.validate}>
-                Validez
-              </button>
-            </Link>
+            <Redirect to="age">
+              <button className={style.validate}>Validez</button>
+            </Redirect>
           </Col>
         </Row>
       </Fade>

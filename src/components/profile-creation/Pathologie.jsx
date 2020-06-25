@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
@@ -39,7 +39,7 @@ export default function Pathologie() {
           toggle={toggle}
           color="danger"
           size="lg"
-          direction='up'
+          direction="up"
         >
           <DropdownToggle caret>{desease}</DropdownToggle>
           <DropdownMenu>
@@ -56,9 +56,9 @@ export default function Pathologie() {
         </Dropdown>
         <Row>
           <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Link to="/dashboard">
+            <Redirect to="/doc-select">
               <button className={style.validate}>Validez</button>
-            </Link>
+            </Redirect>
           </Col>
         </Row>
       </Fade>

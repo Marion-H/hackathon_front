@@ -9,7 +9,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
@@ -17,6 +17,10 @@ import style from "./Sex.module.css";
 export default function DocSelect() {
   const [doctors, setDoctors] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+  //   const [patient, setpatient] = useState("");
+  const [selectedDoc, setselectedDoc] = useState("");
+  const [hasADoc, sethasADoc] = useState(false);
+
   const getDocs = async () => {
     try {
       const docs = await axios.get("http://localhost:8000/doctors");
@@ -28,6 +32,20 @@ export default function DocSelect() {
       alert("something went wrong");
     } finally {
       setisLoading(false);
+    }
+  };
+
+  const handleSelect = (e) => {
+    e.preventDefault();
+    setselectedDoc(e.target.value);
+  };
+
+  const postDoc = () => {
+    const patientUUID = window.localStorage.getItem("uuid");
+    if (selectedDoc) {
+      axios.put(`http://localhost:8000/patients/${patientUUID}`, {
+        selectedDoc,
+      });
     }
   };
 
@@ -57,15 +75,17 @@ export default function DocSelect() {
               <Label for="exampleSelect">Select</Label>
               <Input type="select" name="select" id="exampleSelect">
                 {doctors.map((doc) => (
-                  <option>{doc.firstname}</option>
+                  <option onChange={(e) => handleSelect(e)}>
+                    {doc.firstname}
+                  </option>
                 ))}
               </Input>
             </FormGroup>
             <Row>
               <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-                <Link to="/pathologie">
+                <Redirect to="/dashboard">
                   <button className={style.validate}>Validez</button>
-                </Link>
+                </Redirect>
               </Col>
             </Row>
           </Fade>

@@ -8,7 +8,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
@@ -34,9 +34,9 @@ export default function Birthday() {
         </FormGroup>
         <Row>
           <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Link to="/pathologie">
+            <Redirect to="/pathologie">
               <button className={style.validate}>Validez</button>
-            </Link>
+            </Redirect>
           </Col>
         </Row>
       </Fade>
