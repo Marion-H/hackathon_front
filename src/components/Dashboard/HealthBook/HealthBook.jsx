@@ -26,6 +26,7 @@ export default function HealthBook(props) {
         bloodSugar,
         PatientUuid: uuid,
       });
+      const score = await Axios.put(`http://localhost:8000/patients/${uuid}/click`)
       window.sessionStorage.setItem("DataUuid", res.data.uuid);
       setCanGoToNextPage(true);
     } catch (err) {

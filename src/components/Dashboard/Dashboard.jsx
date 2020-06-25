@@ -109,7 +109,7 @@ export default function Dashboard(props) {
                       </Row>
                     </>
                   ) : (
-                    <p>Cliquez pour envoyer vos données !</p>
+                    <p>Cliquez ici pour envoyer vos données !</p>
                   )}
                 </Card>
               </Link>
