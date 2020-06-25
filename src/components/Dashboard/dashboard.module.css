@@ -16,3 +16,14 @@
   width: 50%;
   border-radius: 20px;
 }
+
+.cardLink {
+  color: black;
+  text-decoration: none;
+  background-color: inherit;
+}
+.cardLink:hover {
+  color: black;
+  text-decoration: none;
+  background-color: inherit;
+}
