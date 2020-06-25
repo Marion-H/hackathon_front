@@ -14,12 +14,14 @@ export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const [datas, setDatas] = useState([]);
+  const [score, setScore] = useState(0)
   const DataUuid = window.sessionStorage.getItem("DataUuid");
 
   // const { className } = props;
   useEffect(() => {
     getInfos();
-  }, []);
+    scoreProgress(datas.score)
+  });
 
   const getInfos = async () => {
     try {
@@ -31,6 +33,18 @@ export default function Dashboard(props) {
       console.log(err);
     }
   };
+
+  const scoreProgress= (scorePatient) => {
+    if (scorePatient ===1){
+      setScore(25)
+    }else if (scorePatient === 2){
+      setScore(50)
+    }else if (scorePatient === 3){
+      setScore(75)
+    }else if (scorePatient === 4) {
+      setScore(100)
+    }
+  }
 
   const toggle = () => setModal(!modal);
   return (
@@ -53,7 +67,7 @@ export default function Dashboard(props) {
                   </p>
                 </Col>
                 <Col className="align-self-center">
-                  <Progress animated color="warning" value={datas.score} />
+                  <Progress animated color="warning" value={score} />
                 </Col>
               </Row>
             </Col>
