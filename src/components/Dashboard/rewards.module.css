@@ -8,7 +8,7 @@
   border: 0px;
 }
 
-.generalButtonDisabled:disabled{
+.generalButtonDisabled:disabled {
   color: black;
   border-radius: 1000px;
   padding: 10px 30px;
@@ -18,7 +18,7 @@
   background-color: lightgrey;
 }
 
-.generalButtonDisabled:hover:disabled{
+.generalButtonDisabled:hover:disabled {
   color: black;
   border-radius: 1000px;
   padding: 10px 30px;
@@ -26,17 +26,7 @@
   text-transform: uppercase;
   border: 0px;
   background-color: lightgrey;
-
 }
-
-
-
-/* .generalButton:hover {
-  background-color: transparent;
-  color: #0596de;
-  transition: all 0.4s ease-in-out;
-  text-decoration: none;
-} */
 
 .linkStyle {
   color: #000000;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Col, Row } from "reactstrap";
 
 import Styles from "./rewards.module.css";
@@ -6,10 +6,36 @@ import Styles from "./rewards.module.css";
 import img_recompense from "../../img/spa_recompense.jpeg";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 const Rewards = () => {
+  const [isLoading, setisLoading] = useState(true);
+  const [datas, setDatas] = useState([]);
+
+  useEffect(() => {
+    getInfos();
+  });
+
+
+  const getInfos = async () => {
+    try {
+      const uuid = window.localStorage.getItem("uuid");
+      const res = await Axios.get(`http://localhost:8000/patients/${uuid}`);
+      setDatas(res.data);
+      setisLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+
   return (
+    { isLoading ? (
+      <p>loading</p>
+    ) : (
     <div>
+      
       <Container>
         <Row>
           <Col lg={{ size: 8, offset: 2 }}>
@@ -37,9 +63,15 @@ const Rewards = () => {
                     -10% sur ton entrée au spa de labenne, venez profiter d'un
                     moment de détente !
                   </p>
-                  <button disabled className={Styles.generalButtonDisabled}>
+                  { isDisabled ?
+                    (<button disabled className={Styles.generalButtonDisabled}>
                     Utiliser le coupon
-                  </button>
+                    </button>) :
+                    <button className={Styles.generalButton}>
+                    Utiliser le coupon
+                    </button>
+
+                  }}
                 </Container>
               </Col>
             </Row>
@@ -80,7 +112,7 @@ const Rewards = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </div>)
   );
 };
 
