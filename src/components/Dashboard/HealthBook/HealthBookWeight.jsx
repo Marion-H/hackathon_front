@@ -32,7 +32,7 @@ export default function HealthBookWeight(props) {
   };
 
   if (CanGoToNextPage) {
-    return <Redirect to="/" />;
+    return <Redirect to="/HealthBookMood" />;
   }
 
   return (
