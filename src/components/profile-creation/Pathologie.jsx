@@ -31,9 +31,9 @@ export default function Pathologie() {
   return (
     <Container>
       <h6 style={{ textAlign: "center", margin: 15 }}>
-        Ca y est, plus que celle la
+        Encore un petit effort!
       </h6>
-      <Progress animated color="success" value={100} />
+      <Progress animated color="success" value={85} />
       <Fade right>
         <Row>
           <Col>
