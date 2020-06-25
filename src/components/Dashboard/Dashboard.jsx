@@ -14,6 +14,7 @@ export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
   const [isLoading, setisLoading] = useState(true);
   const [datas, setDatas] = useState([]);
+  const [getDoc, setgetDoc] = useState([]);
   const DataUuid = window.sessionStorage.getItem("DataUuid");
 
   // const { className } = props;
@@ -26,6 +27,12 @@ export default function Dashboard(props) {
       const uuid = window.localStorage.getItem("uuid");
       const res = await Axios.get(`http://localhost:8000/patients/${uuid}`);
       setDatas(res.data);
+      const docUuid = res.data.DoctorUuid;
+      console.log("docUuid ", docUuid);
+
+      const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
+      setgetDoc(doc.data);
+      console.log("key 2 ", doc.data);
       setisLoading(false);
     } catch (err) {
       console.log(err);
@@ -162,7 +169,7 @@ export default function Dashboard(props) {
               lg={{ size: "8", offset: 2 }}
             >
               <Card className={`${styles.cardStyle} ${styles.cardDoctor} mt-3`}>
-                <DoctorData />
+                <DoctorData getDoc={getDoc} />
               </Card>
             </Col>
           </Row>

@@ -16,10 +16,7 @@ export default function DocSelect() {
     try {
       const docs = await axios.get("http://localhost:8000/doctors");
       setDoctors(docs.data);
-      console.log(docs);
     } catch (error) {
-      console.log(doctors);
-
       alert("something went wrong");
     } finally {
       setisLoading(false);
