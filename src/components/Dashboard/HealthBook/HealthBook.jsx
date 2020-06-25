@@ -39,39 +39,42 @@ export default function HealthBook(props) {
   }
 
   return (
-    <Fade>
-      <Container style={{ marginTop: "20px" }}>
-        <Progress animated color="danger" value={10} />
-        <Fade right>
-          <Row>
-            <Col>
-              <h3 style={{ textAlign: "center", margin: "20%" }}>
-                Quel votre taux de glycemie?
-              </h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <FormGroup>
-                <Label for="weight">Entrez votre taux de glycémie</Label>
-                <Input
-                  type="number"
-                  name="weight"
-                  onChange={(e) => setBloodSugar(e.target.value)}
-                  placeholder="g/L"
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-              <button onClick={putBloodSugar} className={style.validate}>
-                Validez
-              </button>
-            </Col>
-          </Row>
-        </Fade>
-      </Container>
-    </Fade>
+    <Container style={{ marginTop: "30px" }}>
+      <Row>
+        <Col lg={{ size: 6, offset: 3 }}>
+          <Progress animated color="danger" value={10} />
+
+          <Fade right>
+            <Row>
+              <Col>
+                <h3 style={{ textAlign: "center", margin: "20%" }}>
+                  Quel votre taux de glycemie?
+                </h3>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <FormGroup>
+                  <Label for="weight">Entrez votre taux de glycémie</Label>
+                  <Input
+                    type="number"
+                    name="weight"
+                    onChange={(e) => setBloodSugar(e.target.value)}
+                    placeholder="g/L"
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
+                <button onClick={putBloodSugar} className={style.validate}>
+                  Validez
+                </button>
+              </Col>
+            </Row>
+          </Fade>
+        </Col>
+      </Row>
+    </Container>
   );
 }

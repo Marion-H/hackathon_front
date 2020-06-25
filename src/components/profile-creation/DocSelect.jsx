@@ -16,10 +16,7 @@ export default function DocSelect() {
     try {
       const docs = await axios.get("http://localhost:8000/doctors");
       setDoctors(docs.data);
-      console.log(docs);
     } catch (error) {
-      console.log(doctors);
-
       alert("something went wrong");
     } finally {
       setisLoading(false);
@@ -49,45 +46,57 @@ export default function DocSelect() {
   }
 
   return (
-    <Container>
-      {isLoading ? (
-        <p>Loading</p>
-      ) : (
-        <>
-          <h6 style={{ textAlign: "center", margin: 15 }}>
+    <Container style={{ marginTop: "30px" }}>
+      <Row>
+        <Col lg={{ size: 6, offset: 3 }}>
+          <h6 style={{ textAlign: "center" }}>
             Apres ca c'est fini!
           </h6>
           <Progress animated color="success" value={100} />
+
           <Fade right>
-            <Row>
-              <Col>
-                <h3 style={{ textAlign: "center", margin: "20%" }}>
-                  Selectionnez votre médecin traitant.
-                </h3>
-              </Col>
-            </Row>
-            <FormGroup>
-              <select
-                value={selectedDoc}
-                onClick={(e) => setSelectedDoc(e.target.value)}
-              >
-                {doctors.map((doc) => (
-                  <option value={doc.uuid}>
-                    {doc.firstname} {doc.lastname}{" "}
-                  </option>
-                ))}
-              </select>
-            </FormGroup>
-            <Row>
-              <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-                <button className={style.validate} onClick={postDoc}>
-                  Validez
-                </button>
-              </Col>
-            </Row>
+            <Container>
+              {isLoading ? (
+                <p>Loading</p>
+              ) : (
+                <>
+                  <Fade right>
+                    <Row>
+                      <Col>
+                        <h3 style={{ textAlign: "center", margin: "20%" }}>
+                          Selectionnez votre médecin traitant.
+                        </h3>
+                      </Col>
+                    </Row>
+                    <FormGroup>
+                      <select
+                        value={selectedDoc}
+                        onClick={(e) => setSelectedDoc(e.target.value)}
+                      >
+                        {doctors.map((doc) => (
+                          <option value={doc.uuid}>
+                            {doc.firstname} {doc.lastname}{" "}
+                          </option>
+                        ))}
+                      </select>
+                    </FormGroup>
+                    <Row>
+                      <Col
+                        xs={{ size: 6, offset: 3 }}
+                        md={{ size: 8, offset: 2 }}
+                      >
+                        <button className={style.validate} onClick={postDoc}>
+                          Validez
+                        </button>
+                      </Col>
+                    </Row>
+                  </Fade>
+                </>
+              )}
+            </Container>
           </Fade>
-        </>
-      )}
+        </Col>
+      </Row>
     </Container>
   );
 }

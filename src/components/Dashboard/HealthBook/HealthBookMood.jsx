@@ -33,64 +33,81 @@ export default function HealthBookMood(props) {
   }
 
   return (
-    <Fade>
-      <Container style={{ marginTop: "20px" }}>
-        <Progress animated color="danger" value={50} />
-        <Fade right>
-          <Row>
-            <Col>
-              <h3 style={{ textAlign: "center", margin: "20%" }}>
-                Quel est votre humeur aujourd'hui ?
-              </h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {mood === 1 ? (
-                <IoMdSad
-                  size={80}
-                  onClick={() => setMood(1)}
-                  color={"red"}
-                  style={{ opacity: "0.5", border: "solid" }}
-                />
-              ) : (
-                <IoMdSad size={80} onClick={() => setMood(1)} color={"red"} />
-              )}
-            </Col>{" "}
-            <Col>
-              {mood === 2 ? (
-                <RiEmotionNormalLine
-                  onClick={() => setMood(2)}
-                  size={80}
-                  style={{ opacity: "0.5", border: "solid" }}
-                />
-              ) : (
-                <RiEmotionNormalLine onClick={() => setMood(2)} size={80} />
-              )}
-            </Col>
-            <Col>
-              {mood === 3 ? (
-                <FiSmile
-                  onClick={() => setMood(3)}
-                  size={73}
-                  color={"green"}
-                  style={{ opacity: "0.5", border: "solid" }}
-                />
-              ) : (
-                <FiSmile onClick={() => setMood(3)} size={73} color={"green"} />
-              )}
-            </Col>
-          </Row>
+    <Container style={{ marginTop: "30px" }}>
+      <Row>
+        <Col lg={{ size: 6, offset: 3 }}>
+          <Fade>
+            <Container style={{ marginTop: "20px" }}>
+              <Progress animated color="danger" value={50} />
+              <Fade right>
+                <Row>
+                  <Col>
+                    <h3 style={{ textAlign: "center", margin: "20%" }}>
+                      Quel est votre humeur aujourd'hui ?
+                    </h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    {mood === 1 ? (
+                      <IoMdSad
+                        size={80}
+                        onClick={() => setMood(1)}
+                        color={"red"}
+                        style={{ opacity: "0.5", border: "solid" }}
+                      />
+                    ) : (
+                      <IoMdSad
+                        size={80}
+                        onClick={() => setMood(1)}
+                        color={"red"}
+                      />
+                    )}
+                  </Col>{" "}
+                  <Col>
+                    {mood === 2 ? (
+                      <RiEmotionNormalLine
+                        onClick={() => setMood(2)}
+                        size={80}
+                        style={{ opacity: "0.5", border: "solid" }}
+                      />
+                    ) : (
+                      <RiEmotionNormalLine
+                        onClick={() => setMood(2)}
+                        size={80}
+                      />
+                    )}
+                  </Col>
+                  <Col>
+                    {mood === 3 ? (
+                      <FiSmile
+                        onClick={() => setMood(3)}
+                        size={73}
+                        color={"green"}
+                        style={{ opacity: "0.5", border: "solid" }}
+                      />
+                    ) : (
+                      <FiSmile
+                        onClick={() => setMood(3)}
+                        size={73}
+                        color={"green"}
+                      />
+                    )}
+                  </Col>
+                </Row>
 
-          <Row>
-            <Col>
-              <button onClick={putMood} className={style.validate}>
-                Validez
-              </button>
-            </Col>
-          </Row>
-        </Fade>
-      </Container>
-    </Fade>
+                <Row>
+                  <Col>
+                    <button onClick={putMood} className={style.validate}>
+                      Validez
+                    </button>
+                  </Col>
+                </Row>
+              </Fade>
+            </Container>
+          </Fade>
+        </Col>
+      </Row>
+    </Container>
   );
 }

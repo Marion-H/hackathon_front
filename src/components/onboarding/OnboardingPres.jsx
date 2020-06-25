@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function OnboardingPres() {
   return (
     <Fade >
-      <Container>
+      <Container style={{marginTop: "30px"}}>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
             <img src={illuPres} alt="illustration présentation" />
