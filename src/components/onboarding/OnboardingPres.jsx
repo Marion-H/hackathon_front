@@ -1,14 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import illuPres from "../../img/presentation.svg";
-import { Zoom } from "react-reveal";
+import { Fade } from "react-reveal";
 
 import styles from "./onboarding.module.css";
 import { Link } from "react-router-dom";
 
 export default function OnboardingPres() {
   return (
-    <Zoom left>
+    <Fade >
       <Container>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
@@ -25,6 +25,6 @@ export default function OnboardingPres() {
           </Col>
         </Row>
       </Container>
-    </Zoom>
+    </Fade>
   );
 }

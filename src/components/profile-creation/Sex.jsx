@@ -52,7 +52,7 @@ export default function Sex() {
         <button
           style={{ width: "45%" }}
           onClick={() => setGender(false)}
-          className={!gender ? style.buttonOn : style.buttonOff}
+          className={gender ? style.buttonOff : style.buttonOn}
         >
           Femme
         </button>
