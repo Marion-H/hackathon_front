@@ -17,17 +17,18 @@ export default function MyRouter() {
   return (
     <Router>
       <Switch>
-        <Route path="/doc-select" component={DocSelect} />
-        <Route path="/pathologie" component={Pathologie} />
-        <Route path="/age" component={Birthday} />
-        <Route path="/weight" component={Weight} />
-        <Route path="/sex" component={Sex} />
-        <Route path="/etapeDeux" component={OnboardingDash} />
-        <Route path="/etapeTrois" component={OnboardingRecompense} />
-        <Route path="/connexion" component={Register} />
-        <Route path="/dashboard" component={Dashboard} />
         <Route path="/healthBook" component={HealthBook} />
         <Route path="/rewards" component={Rewards} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/doc-select" component={DocSelect} />
+        <Route path="/pathologie" component={Pathologie} />
+        <Route path="/date" component={Birthday} />
+        <Route path="/weight" component={Weight} />
+        <Route path="/sex" component={Sex} />
+        <Route path="/connexion" component={Register} />
+        <Route path="/etapeTrois" component={OnboardingRecompense} />
+        <Route path="/etapeDeux" component={OnboardingDash} />
+        <Route exact path="/" component={OnboardingPres} />
       </Switch>
     </Router>
   );

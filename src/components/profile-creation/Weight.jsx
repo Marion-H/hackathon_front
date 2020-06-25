@@ -33,7 +33,7 @@ export default function Weight() {
   };
 
   if (nextPage) {
-    return <Redirect to="/pathologie" />;
+    return <Redirect to="/date" />;
   }
 
   return (
@@ -62,11 +62,9 @@ export default function Weight() {
       </FormGroup>
       <Row>
         <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-          <Link to="/age">
-            <button onClick={putWeight} className={style.validate}>
-              Validez
-            </button>
-          </Link>
+          <button onClick={putWeight} className={style.validate}>
+            Validez
+          </button>
         </Col>
       </Row>
     </Container>

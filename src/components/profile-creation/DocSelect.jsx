@@ -17,9 +17,8 @@ import style from "./Sex.module.css";
 export default function DocSelect() {
   const [doctors, setDoctors] = useState([]);
   const [isLoading, setisLoading] = useState(true);
-  //   const [patient, setpatient] = useState("");
-  const [selectedDoc, setselectedDoc] = useState("");
-  const [hasADoc, sethasADoc] = useState(false);
+  const [canGoNext, setcanGoNext] = useState(false);
+  const [selectedDoc, setSelectedDoc] = useState();
 
   const getDocs = async () => {
     try {
@@ -35,23 +34,32 @@ export default function DocSelect() {
     }
   };
 
-  const handleSelect = (e) => {
-    e.preventDefault();
-    setselectedDoc(e.target.value);
-  };
+  //   const handleSelect = (e) => {
+  //     e.preventDefault();
+  //     setselectedDoc(e.target.value);
+  //   };
 
-  const postDoc = () => {
-    const patientUUID = window.localStorage.getItem("uuid");
-    if (selectedDoc) {
-      axios.put(`http://localhost:8000/patients/${patientUUID}`, {
-        selectedDoc,
+  const postDoc = async () => {
+    try {
+      const patientUUID = window.localStorage.getItem("uuid");
+
+      await axios.put(`http://localhost:8000/patients/${patientUUID}`, {
+        DoctorUuid: selectedDoc,
       });
+      setcanGoNext(true);
+      console.log(selectedDoc);
+    } catch (error) {
+      alert("Something went wrong");
     }
   };
 
   useEffect(() => {
     getDocs();
   }, []);
+
+  if (canGoNext) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Container>
@@ -72,20 +80,22 @@ export default function DocSelect() {
               </Col>
             </Row>
             <FormGroup>
-              <Label for="exampleSelect">Select</Label>
-              <Input type="select" name="select" id="exampleSelect">
+              <select
+                value={selectedDoc}
+                onClick={(e) => setSelectedDoc(e.target.value)}
+              >
                 {doctors.map((doc) => (
-                  <option onChange={(e) => handleSelect(e)}>
-                    {doc.firstname}
+                  <option value={doc.uuid}>
+                    {doc.firstname} {doc.lastname}{" "}
                   </option>
                 ))}
-              </Input>
+              </select>
             </FormGroup>
             <Row>
               <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-                <Redirect to="/dashboard">
-                  <button className={style.validate}>Validez</button>
-                </Redirect>
+                <button className={style.validate} onClick={postDoc}>
+                  Validez
+                </button>
               </Col>
             </Row>
           </Fade>

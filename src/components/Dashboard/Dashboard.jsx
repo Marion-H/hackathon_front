@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "reactstrap";
+import { Container, Row, Col, Card } from "reactstrap";
 import Citations from "./Citations";
 import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
@@ -22,7 +12,6 @@ import illuReward from "../../img/recompense1.svg";
 
 export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
-  const { className } = props;
 
   const toggle = () => setModal(!modal);
   return (
