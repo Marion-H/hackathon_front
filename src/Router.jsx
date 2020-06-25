@@ -9,8 +9,9 @@ import OnboardingDash from "./components/onboarding/OnboardingDash";
 import OnboardingRecompense from "./components/onboarding/OnboardingRecompence";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
-import HealthBook from "./components/Dashboard/HealthBook";
+import HealthBook from "./components/Dashboard/HealthBook/HealthBook";
 import Rewards from "./components/Dashboard/Rewards";
+import HealthBookWeight from "./components/Dashboard/HealthBook/HealthBookWeight";
 
 export default function MyRouter() {
   return (
@@ -27,6 +28,7 @@ export default function MyRouter() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/healthBook" component={HealthBook} />
         <Route path="/rewards" component={Rewards} />
+        <Route path="/HealthBookWeight" component={HealthBookWeight} />
       </Switch>
     </Router>
   );
