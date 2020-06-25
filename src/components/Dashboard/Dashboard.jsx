@@ -14,6 +14,8 @@ import Citations from "./Citations";
 import Zoom from "react-reveal/Zoom";
 import styles from "./dashboard.module.css";
 import DoctorData from "./DoctorData";
+import MyTable from "./Posologie";
+import { Link } from "react-router-dom";
 
 export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
@@ -86,12 +88,15 @@ export default function Dashboard(props) {
               className="mt-3"
               style={{
                 background: "yellow",
-
                 height: "200px",
                 cursor: "pointer",
                 borderRadius: "10px",
               }}
-            ></Card>
+            >
+              <Link to="/posologie">
+                <button>Posologie</button>
+              </Link>
+            </Card>
           </Col>
         </Row>
         <Row>
