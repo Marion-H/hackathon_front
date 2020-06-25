@@ -13,6 +13,7 @@ import HealthBook from "./components/Dashboard/HealthBook/HealthBook";
 import Rewards from "./components/Dashboard/Rewards";
 import DocSelect from "./components/profile-creation/DocSelect";
 import HealthBookWeight from "./components/Dashboard/HealthBook/HealthBookWeight";
+import HealthBookAppetite from "./components/Dashboard/HealthBook/HealthBookAppetite";
 import HealthBookMood from "./components/Dashboard/HealthBook/HealthBookMood";
 
 export default function MyRouter() {
@@ -34,6 +35,7 @@ export default function MyRouter() {
         <Route path="/healthBook" component={HealthBook} />
         <Route path="/rewards" component={Rewards} />
         <Route path="/HealthBookWeight" component={HealthBookWeight} />
+        <Route path="/healthBookAppetite" component={HealthBookAppetite} />
         <Route path="/HealthBookMood" component={HealthBookMood} />
         <Route exact path="/" component={OnboardingPres} />
       </Switch>
