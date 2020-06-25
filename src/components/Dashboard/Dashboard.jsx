@@ -11,7 +11,7 @@ import {
   Button,
 } from "reactstrap";
 import Citations from "./Citations";
-import Zoom from "react-reveal/Zoom";
+import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
 import DoctorData from "./DoctorData";
 
@@ -21,7 +21,7 @@ export default function Dashboard(props) {
 
   const toggle = () => setModal(!modal);
   return (
-    <Zoom left>
+    <Fade>
       <Container>
         <Row>
           <Col
@@ -125,11 +125,10 @@ export default function Dashboard(props) {
             <Card
               className="mt-3"
               style={{
-                background: "lightblue",
+                background: "lightgrey",
                 height: "200px",
                 cursor: "pointer",
                 borderRadius: "10px",
-
                 marginBottom: "20px",
               }}
             >
@@ -138,6 +137,6 @@ export default function Dashboard(props) {
           </Col>
         </Row>
       </Container>
-    </Zoom>
+    </Fade>
   );
 }

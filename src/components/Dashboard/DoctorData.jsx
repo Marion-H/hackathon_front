@@ -1,32 +1,49 @@
-import React from "react";
-import { Row, Col } from "reactstrap";
-import Raoult from "../../img/Raoult-crop.jpg";
+import React, { useState } from "react";
+import {
+  Container,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+} from "reactstrap";
+import Cabinet from "../../img/cabinetmedicalseignosse2018-3.jpg";
 import { AiOutlinePhone } from "react-icons/ai";
 import style from "./dashboard.module.css";
 
-export default function DoctorData() {
-  return (
-    <Row>
-      <Col xs={{ size: 3 }}>
-        <img
-          style={{ borderRadius: 1000, marginTop: "50%" }}
-          src={Raoult}
-          alt="photo du praticien"
-          width="90%"
-        />
-      </Col>
-      <Col xs={{ size: 6 }}>
-        <h3 style={{ marginTop: 15 }}>Dr. Raoul</h3>
+export default function DoctorData(props) {
+  const { className } = props;
 
-        <p style={{ marginTop: 15 }}>
-          2 allée des cocquelicots, MARSEILLE XXXXX{" "}
-        </p>
-      </Col>
-      <Col xs={{ size: 3 }}>
-        <button className={style.phone}>
-          <AiOutlinePhone size={40} />
-        </button>
-      </Col>
-    </Row>
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+  return (
+    <Container>
+      <div onClick={toggle}>
+        <h1 className={style.titleH1}>Votre médecin généraliste</h1>
+
+        <Modal isOpen={modal} toggle={toggle} className={className}>
+          <ModalHeader toggle={toggle}>Infos générales</ModalHeader>
+          <ModalBody>
+            <img
+              className={style.imgDoc}
+              src={Cabinet}
+              alt="image du praticien"
+            />
+            <p>
+              Pr. Raoult Didier <br />
+              Ouvert de Xh à XXh <br />
+              20 rue des hirondelles, MARSEILLE 13000
+            </p>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={toggle}>
+              Appelez
+              <AiOutlinePhone size={40} />
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    </Container>
   );
 }

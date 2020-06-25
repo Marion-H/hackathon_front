@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Container, Form, FormGroup, Label, Input } from "reactstrap";
 import Squirrel from "../img/logo_squicker_fond.png";
 import style from "./Connexion.module.css";
