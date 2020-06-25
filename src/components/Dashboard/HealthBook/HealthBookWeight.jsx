@@ -36,39 +36,45 @@ export default function HealthBookWeight(props) {
   }
 
   return (
-    <Fade>
-      <Container style={{ marginTop: "20px" }}>
-        <Progress animated color="danger" value={30} />
-        <Fade right>
-          <Row>
-            <Col>
-              <h3 style={{ textAlign: "center", margin: "20%" }}>
-                Quel est votre poids?
-              </h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <FormGroup>
-                <Label for="weight">Entrez votre poids</Label>
-                <Input
-                  type="number"
-                  name="weight"
-                  onChange={(e) => setWeight(e.target.value)}
-                  placeholder="Kg"
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <button onClick={putWeight} className={style.validate}>
-                Validez
-              </button>
-            </Col>
-          </Row>
-        </Fade>
-      </Container>
-    </Fade>
+    <Container style={{ marginTop: "30px" }}>
+      <Row>
+        <Col lg={{ size: 6, offset: 3 }}>
+          <Fade>
+            <Container style={{ marginTop: "20px" }}>
+              <Progress animated color="danger" value={30} />
+              <Fade right>
+                <Row>
+                  <Col>
+                    <h3 style={{ textAlign: "center", margin: "20%" }}>
+                      Quel est votre poids?
+                    </h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <FormGroup>
+                      <Label for="weight">Entrez votre poids</Label>
+                      <Input
+                        type="number"
+                        name="weight"
+                        onChange={(e) => setWeight(e.target.value)}
+                        placeholder="Kg"
+                      />
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <button onClick={putWeight} className={style.validate}>
+                      Validez
+                    </button>
+                  </Col>
+                </Row>
+              </Fade>
+            </Container>
+          </Fade>
+        </Col>
+      </Row>
+    </Container>
   );
 }

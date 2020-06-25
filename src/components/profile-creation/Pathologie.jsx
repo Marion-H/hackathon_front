@@ -32,9 +32,7 @@ export default function Pathologie() {
     <Container style={{ marginTop: "30px" }}>
       <Row>
         <Col lg={{ size: 6, offset: 3 }}>
-          <h6 style={{ textAlign: "center" }}>
-            Ca y est, plus que celle la
-          </h6>
+          <h6 style={{ textAlign: "center" }}>Ca y est, plus que celle la</h6>
           <Progress animated color="success" value={100} />
 
           <Fade right>
@@ -59,7 +57,7 @@ export default function Pathologie() {
                     Diabète
                   </button>
                 </Col>
-                <Col lg={{ size: 12, offset: 0,  }}>
+                <Col lg={{ size: 12, offset: 0 }}>
                   <button
                     style={{ width: "80%", marginTop: "20px" }}
                     onClick={() => setPathology("Hypertension")}
