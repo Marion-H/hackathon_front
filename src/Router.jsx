@@ -9,6 +9,8 @@ import OnboardingDash from "./components/onboarding/OnboardingDash";
 import OnboardingRecompense from "./components/onboarding/OnboardingRecompence";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
+import HealthBook from "./components/Dashboard/HealthBook";
+import Rewards from "./components/Dashboard/Rewards";
 import DocSelect from "./components/profile-creation/DocSelect";
 
 export default function MyRouter() {
@@ -24,7 +26,8 @@ export default function MyRouter() {
         <Route path="/etapeTrois" component={OnboardingRecompense} />
         <Route path="/connexion" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route exact path="/" component={OnboardingPres} />
+        <Route path="/healthBook" component={HealthBook} />
+        <Route path="/rewards" component={Rewards} />
       </Switch>
     </Router>
   );

@@ -8,56 +8,67 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Fade } from "react-reveal";
+import { Link, Redirect } from "react-router-dom";
+
+import Zoom from "react-reveal/Zoom";
 import style from "./Sex.module.css";
-import { Redirect } from "react-router-dom";
+import Axios from "axios";
 
 export default function Weight() {
-  const [CanGoToNextPage, setCanGoToNextPage] = useState(false);
   const [weight, setWeight] = useState("");
 
-  // const putWeight = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const uuid = window.localStorage.getItem("uuid");
-  //     await Axios.put(`http://localhost:8000/patients/${uuid}`, {
-  //       gender,
-  //     });
-  //     setCanGoToNextPage(true);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const [nextPage, setNextPage] = useState("");
 
-  // if (CanGoToNextPage) {
-  //   return <Redirect to="/age" />;
-  // }
+  const putWeight = async (e) => {
+    e.preventDefault();
+    try {
+      const uuid = window.localStorage.getItem("uuid");
+      await Axios.put(`http://localhost:8000/patients/${uuid}`, {
+        weight,
+      });
+      setNextPage(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (nextPage) {
+    return <Redirect to="/pathologie" />;
+  }
+
   return (
     <Container>
       <h6 style={{ textAlign: "center", margin: 15 }}>
         Encore un petit effort.
       </h6>
       <Progress animated color="warning" value={40} />
-      <Fade right>
-        <Row>
-          <Col>
+      <Row>
+        <Col>
+          <Zoom>
             <h3 style={{ textAlign: "center", margin: "20%" }}>
               Quel est votre poids?
             </h3>
-          </Col>
-        </Row>
-        <FormGroup>
-          <Label for="weight">Entrez votre poids</Label>
-          <Input type="number" name="weight"></Input>
-        </FormGroup>
-        <Row>
-          <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Redirect to="age">
-              <button className={style.validate}>Validez</button>
-            </Redirect>
-          </Col>
-        </Row>
-      </Fade>
+          </Zoom>
+        </Col>
+      </Row>
+      <FormGroup>
+        <Label for="weight">Entrez votre poids</Label>
+        <Input
+          type="number"
+          name="weight"
+          onChange={(e) => setWeight(e.target.value)}
+          placeholder="Kg"
+        />
+      </FormGroup>
+      <Row>
+        <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
+          <Link to="/age">
+            <button onClick={putWeight} className={style.validate}>
+              Validez
+            </button>
+          </Link>
+        </Col>
+      </Row>
     </Container>
   );
 }
