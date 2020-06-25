@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Progress,
   Row,
@@ -8,12 +8,16 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
 
 export default function Birthday() {
+  const [canGoNext, setcanGoNext] = useState(false);
+  if (canGoNext) {
+    return <Redirect to="/pathologie" />;
+  }
   return (
     <Container>
       <h6 style={{ textAlign: "center", margin: 15 }}>
@@ -34,9 +38,7 @@ export default function Birthday() {
         </FormGroup>
         <Row>
           <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Link to="/pathologie">
-              <button className={style.validate}>Validez</button>
-            </Link>
+            <button className={style.validate}>Validez</button>
           </Col>
         </Row>
       </Fade>

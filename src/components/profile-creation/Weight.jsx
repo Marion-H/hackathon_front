@@ -8,17 +8,16 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Zoom from "react-reveal/Zoom";
 import style from "./Sex.module.css";
 import Axios from "axios";
 
-
 export default function Weight() {
-  const[weight, setWeight] = useState("");
+  const [weight, setWeight] = useState("");
 
-  const [nextPage, setNextPage]= useState("")
+  const [nextPage, setNextPage] = useState("");
 
   const putWeight = async (e) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ export default function Weight() {
   };
 
   if (nextPage) {
-    return <Redirect to="/pathologie" />;
+    return <Redirect to="/date" />;
   }
 
   return (
@@ -54,13 +53,18 @@ export default function Weight() {
       </Row>
       <FormGroup>
         <Label for="weight">Entrez votre poids</Label>
-        <Input type="number" name="weight" onChange={(e) => setWeight(e.target.value)} placeholder="Kg"/>
+        <Input
+          type="number"
+          name="weight"
+          onChange={(e) => setWeight(e.target.value)}
+          placeholder="Kg"
+        />
       </FormGroup>
       <Row>
         <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-          <Link to="/age">
-            <button onClick={putWeight} className={style.validate}>Validez</button>
-          </Link>
+          <button onClick={putWeight} className={style.validate}>
+            Validez
+          </button>
         </Col>
       </Row>
     </Container>
