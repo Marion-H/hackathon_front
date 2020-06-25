@@ -34,7 +34,7 @@ export default function MyRouter() {
         <Route path="/etapeTrois" component={OnboardingRecompense} />
         <Route path="/etapeDeux" component={OnboardingDash} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/Posologie" component={Posologie} />
+        <Route path="/posologie" component={Posologie} />
         <Route path="/healthBook" component={HealthBook} />
         <Route path="/rewards" component={Rewards} />
         <Route path="/HealthBookWeight" component={HealthBookWeight} />
