@@ -190,7 +190,13 @@ export default function Dashboard(props) {
               md={{ size: "4", offset: 0 }}
               lg={{ size: "4", offset: 0 }}
             >
-              <Card className={`${styles.cardStyle1} mt-3`}></Card>
+              <Link to="/posologie">
+                <Card
+                  className={`${styles.cardReward} ${styles.cardStyle1} mt-3`}
+                >
+                  COUCOU
+                </Card>
+              </Link>
             </Col>
           </Row>
           <Row>
@@ -214,7 +220,9 @@ export default function Dashboard(props) {
               md={{ size: "8", offset: 2 }}
               lg={{ size: "8", offset: 2 }}
             >
-              <Card className={`${styles.cardStyle} ${styles.cardDoctor} mt-3`}>
+              <Card
+                className={`${styles.cardStyle1} ${styles.cardDoctor} mt-3`}
+              >
                 <DoctorData getDoc={getDoc} />
               </Card>
             </Col>
