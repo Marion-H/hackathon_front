@@ -9,7 +9,7 @@ import { Fade } from "react-reveal";
 export default function OnboardingDash() {
   return (
     <Fade right>
-      <Container>
+      <Container style={{ marginTop: "30px" }}>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
             <Row>
@@ -23,14 +23,15 @@ export default function OnboardingDash() {
               </Col>
             </Row>
             <Row>
-              <Col>
-                <Link to="/etapeTrois" className={styles.generalButton}>
-                  Continuer
-                </Link>
-              </Col>
+             
               <Col>
                 <Link to="/" className={styles.lienSimple}>
                   Retour
+                </Link>
+              </Col>
+              <Col>
+                <Link to="/etapeTrois" className={styles.generalButton}>
+                  Continuer
                 </Link>
               </Col>
             </Row>
