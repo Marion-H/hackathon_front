@@ -1,24 +1,33 @@
 import React, { useState } from "react";
-import {
-  Progress,
-  Row,
-  Col,
-  Container,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+import { Progress, Row, Col, Container } from "reactstrap";
 
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
+import Axios from "axios";
+import { Redirect } from "react-router-dom";
 
 export default function Pathologie() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [desease, setDesease] = useState("Selectionnez votre pathologie");
+  const [pathology, setPathology] = useState("");
 
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  const [CanGoToNextPage, setCanGoToNextPage] = useState(false);
+
+  const putPathology = async (e) => {
+    e.preventDefault();
+    try {
+      const uuid = window.localStorage.getItem("uuid");
+      await Axios.put(`http://localhost:8000/patients/${uuid}`, {
+        pathology,
+      });
+      setCanGoToNextPage(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (CanGoToNextPage) {
+    return <Redirect to="/doc-select" />;
+  }
+
   return (
     <Container>
       <h6 style={{ textAlign: "center", margin: 15 }}>
@@ -34,31 +43,39 @@ export default function Pathologie() {
           </Col>
         </Row>
 
-        <Dropdown
-          isOpen={dropdownOpen}
-          toggle={toggle}
-          color="danger"
-          size="lg"
-          direction='up'
+        <button
+          style={{ width: "45%", marginRight: "5vw" }}
+          onClick={() => setPathology("Diabete")}
+          className={pathology === "Diabete" ? style.buttonOn : style.buttonOff}
         >
-          <DropdownToggle caret>{desease}</DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem onClick={() => setDesease("Diabète")}>
-              Diabète
-            </DropdownItem>
-            <DropdownItem onClick={() => setDesease("Hypertension")}>
-              Hypertension
-            </DropdownItem>
-            <DropdownItem onClick={() => setDesease("Apnée du sommeil")}>
-              Apnée du sommeil
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+          Diabète
+        </button>
+
+        <button
+          style={{ width: "45%", marginRight: "5vw" }}
+          onClick={() => setPathology("Hypertension")}
+          className={
+            pathology === "Hypertension" ? style.buttonOn : style.buttonOff
+          }
+        >
+          Hypertension
+        </button>
+
+        <button
+          style={{ width: "45%", marginRight: "5vw" }}
+          onClick={() => setPathology("Apnée du sommeil")}
+          className={
+            pathology === "Apnée du sommeil" ? style.buttonOn : style.buttonOff
+          }
+        >
+          Apnée du sommeil
+        </button>
+
         <Row>
           <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <Link to="/dashboard">
-              <button className={style.validate}>Validez</button>
-            </Link>
+            <button onClick={putPathology} className={style.validate}>
+              Validez
+            </button>
           </Col>
         </Row>
       </Fade>

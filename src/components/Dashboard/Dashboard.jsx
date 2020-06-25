@@ -1,148 +1,173 @@
-import React, { useState } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "reactstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Card, Progress } from "reactstrap";
 import Citations from "./Citations";
-import Zoom from "react-reveal/Zoom";
+import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
+
 import DoctorData from "./DoctorData";
-import MyTable from "./Posologie";
 import { Link } from "react-router-dom";
+
+import illuReward from "../../img/recompenseDash.svg";
+import Axios from "axios";
 
 export default function Dashboard(props) {
   const [modal, setModal] = useState(false);
-  const { className } = props;
+  const [isLoading, setisLoading] = useState(true);
+  const [datas, setDatas] = useState([]);
+  const DataUuid = window.sessionStorage.getItem("DataUuid");
+
+  // const { className } = props;
+  useEffect(() => {
+    getInfos();
+  }, []);
+
+  const getInfos = async () => {
+    try {
+      const uuid = window.localStorage.getItem("uuid");
+      const res = await Axios.get(`http://localhost:8000/patients/${uuid}`);
+      setDatas(res.data);
+      setisLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const toggle = () => setModal(!modal);
   return (
-    <Zoom left>
-      <Container>
-        <Row>
-          <Col
-            xs={{ size: "12", offset: 0 }}
-            sm={{ size: "12", offset: 0 }}
-            md={{ size: "8", offset: 2 }}
-            lg={{ size: "8", offset: 2 }}
-          >
-            <div>
-              <Card
-                onClick={toggle}
-                className="mt-3"
-                style={{
-                  background: "red",
-
-                  height: "200px",
-                  cursor: "pointer",
-                  borderRadius: "10px",
-                }}
-              ></Card>
-
-              <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Carnet de Santé</ModalHeader>
-                <ModalBody>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </ModalBody>
-                <ModalFooter>
-                  <Button color="primary" onClick={toggle}>
-                    Valider
-                  </Button>{" "}
-                  <Button color="secondary" onClick={toggle}>
-                    Annulé
-                  </Button>
-                </ModalFooter>
-              </Modal>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            xs={{ size: "6", offset: 0 }}
-            sm={{ size: "6", offset: 0 }}
-            md={{ size: "4", offset: 2 }}
-            lg={{ size: "4", offset: 2 }}
-          >
-            <Card className={`${styles.citationCard} mt-3`}></Card>
-          </Col>
-          <Col
-            xs={{ size: "6", offset: 0 }}
-            sm={{ size: "6", offset: 0 }}
-            md={{ size: "4", offset: 0 }}
-            lg={{ size: "4", offset: 0 }}
-          >
-            <Card
-              className="mt-3"
-              style={{
-                background: "yellow",
-                height: "200px",
-                cursor: "pointer",
-                borderRadius: "10px",
-              }}
+    <Fade>
+      {isLoading ? (
+        <p>loading</p>
+      ) : (
+        <Container>
+          <Row>
+            <Col lg={{ size: "8", offset: 2 }}>
+              <Row>
+                <Col>
+                  <p>
+                    <span className={styles.spanTexteDash}>
+                      Bonjour {datas.firstname},
+                    </span>
+                    <br />
+                    vous trouverez ici vos résultats envoyer à votre medecin
+                    traitant Dr {}
+                  </p>
+                </Col>
+                <Col className="align-self-center">
+                  <Progress animated color="warning" value={datas.score} />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={{ size: "12", offset: 0 }}
+              sm={{ size: "12", offset: 0 }}
+              md={{ size: "8", offset: 2 }}
+              lg={{ size: "8", offset: 2 }}
             >
-              <Link to="/posologie">
-                <button>Posologie</button>
+              <Link className={styles.cardLink} to="./healthBook">
+                <Card
+                  onClick={toggle}
+                  className={DataUuid ? styles.cardStyle1 : styles.cardStyle2}
+                >
+                  {DataUuid ? (
+                    <>
+                      <Row>
+                        <h2>Ma pathologie : {datas.pathology}</h2>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <Row>
+                            <Col>
+                              <h3>Humeur du jour</h3>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>{datas.dailyDatas[0].mood}</Col>
+                          </Row>
+                        </Col>
+                        <Col>
+                          <Row>
+                            <Col>
+                              <h3>Taux de glycémie</h3>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>{datas.dailyDatas[0].bloodSugar}</Col>
+                          </Row>
+                        </Col>
+                        <Col>
+                          <Row>
+                            <Col>
+                              <h3>Weight</h3>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col>{datas.dailyDatas[0].weight}</Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </>
+                  ) : (
+                    <p>Cliquez pour envoyer vos données !</p>
+                  )}
+                </Card>
               </Link>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            xs={{ size: "12", offset: 0 }}
-            sm={{ size: "12", offset: 0 }}
-            md={{ size: "8", offset: 2 }}
-            lg={{ size: "8", offset: 2 }}
-          >
-            <Card
-              className="mt-3"
-              style={{
-                background: "orange",
-                height: "200px",
-                cursor: "pointer",
-                borderRadius: "10px",
-              }}
-            >
-              {" "}
-              <Citations />
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            xs={{ size: "12", offset: 0 }}
-            sm={{ size: "12", offset: 0 }}
-            md={{ size: "8", offset: 2 }}
-            lg={{ size: "8", offset: 2 }}
-          >
-            <Card
-              className="mt-3"
-              style={{
-                background: "lightblue",
-                height: "200px",
-                cursor: "pointer",
-                borderRadius: "10px",
+            </Col>
+          </Row>
 
-                marginBottom: "20px",
-              }}
+          <Row>
+            <Col
+              xs={{ size: "6", offset: 0 }}
+              sm={{ size: "6", offset: 0 }}
+              md={{ size: "4", offset: 2 }}
+              lg={{ size: "4", offset: 2 }}
             >
-              <DoctorData />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </Zoom>
+              <Link to="/rewards">
+                <Card
+                  className={`${styles.cardStyle} ${styles.cardReward} justify-content-center mt-3`}
+                >
+                  <img src={illuReward} alt="illustration récompenses" />
+                </Card>
+              </Link>
+            </Col>
+            <Col
+              xs={{ size: "6", offset: 0 }}
+              sm={{ size: "6", offset: 0 }}
+              md={{ size: "4", offset: 0 }}
+              lg={{ size: "4", offset: 0 }}
+            >
+              <Card className={`${styles.cardStyle} mt-3`}></Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={{ size: "12", offset: 0 }}
+              sm={{ size: "12", offset: 0 }}
+              md={{ size: "8", offset: 2 }}
+              lg={{ size: "8", offset: 2 }}
+            >
+              <Card
+                className={`${styles.citationCard} ${styles.cardStyle} mt-3`}
+              >
+                <Citations />
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              xs={{ size: "12", offset: 0 }}
+              sm={{ size: "12", offset: 0 }}
+              md={{ size: "8", offset: 2 }}
+              lg={{ size: "8", offset: 2 }}
+            >
+              <Card className={`${styles.cardStyle} ${styles.cardDoctor} mt-3`}>
+                <DoctorData />
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      )}
+    </Fade>
   );
 }

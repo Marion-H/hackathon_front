@@ -1,13 +1,54 @@
+.cardStyle1 {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  border: 0px !important;
+}
+.cardStyle2 {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  border: 0px !important;
+  background-color: #f86d70 !important;
+}
+
+.cardDoctor {
+  background-color: rgba(5, 150, 222, 0.2) !important;
+}
+
+.cardReward {
+  height: 200px;
+  background-color: rgba(5, 150, 222, 0.1) !important;
+}
+
 .citationCard {
   height: 200px;
   border-radius: 10px;
+  background-color: rgba(5, 150, 222, 0.4) !important;
 }
 
-.phone {
-  margin-top: 50%;
-  height: 60%;
-  width: 80%;
+.moduleDoc {
+  cursor: "pointer";
+  border-radius: "10px";
+}
+
+.titleH1 {
+  margin: 5%;
+}
+
+.imgDoc {
+  width: 50%;
   border-radius: 20px;
-  background-color: #48b460;
-  border: 1px solid;
+}
+
+.cardLink {
+  color: black;
+  text-decoration: none;
+  background-color: inherit;
+}
+.cardLink:hover {
+  color: black;
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.spanTexteDash {
+  font-weight: 800;
+  font-size: 25px;
 }

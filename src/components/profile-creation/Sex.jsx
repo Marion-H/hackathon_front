@@ -44,15 +44,15 @@ export default function Sex() {
 
         <button
           style={{ width: "45%", marginRight: "5vw" }}
-          onClick={() => setGender(true)}
-          className={gender ? style.buttonOn : style.buttonOff}
+          onClick={() => setGender("Homme")}
+          className={(gender=== "Homme") ? style.buttonOn : style.buttonOff}
         >
           Homme
         </button>
         <button
           style={{ width: "45%" }}
-          onClick={() => setGender(false)}
-          className={gender ? style.buttonOff : style.buttonOn}
+          onClick={() => setGender("Femme")}
+          className={(gender==="Femme") ? style.buttonOn : style.buttonOff }
         >
           Femme
         </button>
