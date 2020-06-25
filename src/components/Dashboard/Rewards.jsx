@@ -37,7 +37,7 @@ const Rewards = () => {
                     -10% sur ton entrée au spa de labenne, venez profiter d'un
                     moment de détente !
                   </p>
-                  <button className={Styles.generalButton}>
+                  <button disabled className={Styles.generalButtonDisabled}>
                     Utiliser le coupon
                   </button>
                 </Container>
