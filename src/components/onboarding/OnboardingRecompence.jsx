@@ -17,8 +17,9 @@ export default function OnboardingRecompense() {
                 <img src={illuRewards} alt="illustration récompences" />
                 <h2 className={`${styles.titreDeux} mt-3`}>Etape 3</h2>
                 <p className="my-5">
-                  Plus ton suivis sera régulier plus tu accumulera des points et
-                  bénéficira de remise sur tes activités et magasins favoris.
+                  Plus votre suivis sera <b>régulier</b> plus vous accumulerez
+                  des points et bénéficirez de <b>remises sur vos activités</b>
+                  et magasins favoris.
                 </p>
               </Col>
             </Row>

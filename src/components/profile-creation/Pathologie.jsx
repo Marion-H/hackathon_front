@@ -5,6 +5,8 @@ import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
 import Axios from "axios";
 import { Redirect } from "react-router-dom";
+import styles from "./profile.module.css";
+import logo_simple from "../../img/logo_squicker.svg";
 
 export default function Pathologie() {
   const [pathology, setPathology] = useState("");
@@ -31,16 +33,26 @@ export default function Pathologie() {
   return (
     <Container style={{ marginTop: "30px" }}>
       <Row>
+        <Col lg={{ size: 2, offset: 5 }}>
+          <img width="40%" src={logo_simple} alt="logo squicker" />
+        </Col>
+      </Row>
+      <Row>
         <Col lg={{ size: 6, offset: 3 }}>
           <h6 style={{ textAlign: "center" }}>Ca y est, plus que celle la</h6>
-          <Progress animated color="success" value={100} />
+          <Progress
+            className={styles.progressBar}
+            animated
+            color="success"
+            value={100}
+          />
 
           <Fade right>
             <Container>
               <Fade right>
                 <Row>
                   <Col>
-                    <h3 style={{ textAlign: "center", margin: "20%" }}>
+                    <h3 style={{ textAlign: "center", margin: "10%" }}>
                       Quel pathologie avez vous?
                     </h3>
                   </Col>
@@ -48,7 +60,7 @@ export default function Pathologie() {
 
                 <Col lg={{ size: 12, offset: 0 }}>
                   <button
-                    style={{ width: "80%" }}
+                    style={{ width: "80%", padding: "10px 30px" }}
                     onClick={() => setPathology("Diabete")}
                     className={
                       pathology === "Diabete" ? style.buttonOn : style.buttonOff
@@ -59,7 +71,11 @@ export default function Pathologie() {
                 </Col>
                 <Col lg={{ size: 12, offset: 0 }}>
                   <button
-                    style={{ width: "80%", marginTop: "20px" }}
+                    style={{
+                      width: "80%",
+                      marginTop: "20px",
+                      padding: "10px 30px",
+                    }}
                     onClick={() => setPathology("Hypertension")}
                     className={
                       pathology === "Hypertension"
@@ -73,7 +89,11 @@ export default function Pathologie() {
 
                 <Col lg={{ size: 12, offset: 0 }}>
                   <button
-                    style={{ width: "80%", marginTop: "20px" }}
+                    style={{
+                      width: "80%",
+                      marginTop: "20px",
+                      padding: "10px 30px",
+                    }}
                     onClick={() => setPathology("Apnée du sommeil")}
                     className={
                       pathology === "Apnée du sommeil"
@@ -85,9 +105,12 @@ export default function Pathologie() {
                   </button>
                 </Col>
 
-                <Row>
+                <Row className="my-5">
                   <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-                    <button onClick={putPathology} className={style.validate}>
+                    <button
+                      onClick={putPathology}
+                      className={style.generalButton}
+                    >
                       Validez
                     </button>
                   </Col>

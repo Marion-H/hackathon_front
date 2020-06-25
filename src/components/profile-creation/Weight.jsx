@@ -14,6 +14,8 @@ import { Redirect } from "react-router-dom";
 import Zoom from "react-reveal/Zoom";
 import style from "./Sex.module.css";
 import Axios from "axios";
+import styles from "./profile.module.css";
+import logo_simple from "../../img/logo_squicker.svg";
 
 export default function Weight() {
   const [weight, setWeight] = useState("");
@@ -41,11 +43,19 @@ export default function Weight() {
     <>
       <Container style={{ marginTop: "30px" }}>
         <Row>
+          <Col lg={{ size: 2, offset: 5 }}>
+            <img width="40%" src={logo_simple} alt="logo squicker" />
+          </Col>
+        </Row>
+        <Row>
           <Col lg={{ size: 6, offset: 3 }}>
-            <h6 style={{ textAlign: "center"}}>
-              Encore un petit effort.
-            </h6>
-            <Progress animated color="warning" value={40} />
+            <h6 style={{ textAlign: "center" }}>Encore un petit effort.</h6>
+            <Progress
+              className={styles.progressBar}
+              animated
+              color="warning"
+              value={40}
+            />
             <Fade right>
               <Container>
                 <Row>
@@ -66,9 +76,9 @@ export default function Weight() {
                     placeholder="Kg"
                   />
                 </FormGroup>
-                <Row>
+                <Row className="my-5">
                   <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-                    <button onClick={putWeight} className={style.validate}>
+                    <button onClick={putWeight} className={style.generalButton}>
                       Validez
                     </button>
                   </Col>

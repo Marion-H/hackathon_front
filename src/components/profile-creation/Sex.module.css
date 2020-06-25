@@ -14,6 +14,23 @@
   border-radius: 1000px;
 }
 
+.generalButton {
+  background-color: #0596de;
+  color: white;
+  border-radius: 1000px;
+  padding: 10px 30px;
+  box-shadow: 1px 1px 4px rgba(40, 8, 76, 0.2);
+  text-transform: uppercase;
+  border: 0px;
+}
+
+.generalButton:hover {
+  background-color: transparent;
+  color: #0596de;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+}
+
 .validate {
   margin-top: 10vh;
   width: 100%;
