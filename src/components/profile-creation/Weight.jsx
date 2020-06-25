@@ -8,7 +8,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Zoom from "react-reveal/Zoom";
 import style from "./Sex.module.css";

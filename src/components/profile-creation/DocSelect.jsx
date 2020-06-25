@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Progress,
-  Row,
-  Col,
-  Container,
-  FormGroup,
-  Label,
-  Input,
-} from "reactstrap";
+import { Progress, Row, Col, Container, FormGroup } from "reactstrap";
 import { Redirect } from "react-router-dom";
 
 import Fade from "react-reveal/Fade";
@@ -33,11 +25,6 @@ export default function DocSelect() {
       setisLoading(false);
     }
   };
-
-  //   const handleSelect = (e) => {
-  //     e.preventDefault();
-  //     setselectedDoc(e.target.value);
-  //   };
 
   const postDoc = async () => {
     try {
