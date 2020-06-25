@@ -25,7 +25,7 @@ export default function Pathologie() {
   };
 
   if (CanGoToNextPage) {
-    return <Redirect to="/doc_select" />;
+    return <Redirect to="/doc-select" />;
   }
 
   return (
