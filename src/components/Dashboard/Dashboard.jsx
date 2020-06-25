@@ -19,12 +19,13 @@ export default function Dashboard(props) {
   const [datas, setDatas] = useState([]);
   const [getDoc, setgetDoc] = useState([]);
   const DataUuid = window.sessionStorage.getItem("DataUuid");
+  const [score, setScore] = useState(0);
 
   // const { className } = props;
   useEffect(() => {
     getInfos();
-    scoreProgress(datas.score)
-  });
+    scoreProgress(datas.score);
+  }, []);
 
   const getInfos = async () => {
     try {
@@ -43,17 +44,17 @@ export default function Dashboard(props) {
     }
   };
 
-  const scoreProgress= (scorePatient) => {
-    if (scorePatient ===1){
-      setScore(25)
-    }else if (scorePatient === 2){
-      setScore(50)
-    }else if (scorePatient === 3){
-      setScore(75)
-    }else if (scorePatient === 4) {
-      setScore(100)
+  const scoreProgress = (scorePatient) => {
+    if (scorePatient === 1) {
+      setScore(25);
+    } else if (scorePatient === 2) {
+      setScore(50);
+    } else if (scorePatient === 3) {
+      setScore(75);
+    } else if (scorePatient === 4) {
+      setScore(100);
     }
-  }
+  };
 
   const toggle = () => setModal(!modal);
   return (
@@ -155,7 +156,6 @@ export default function Dashboard(props) {
                       </Row>
                     </div>
                   ) : (
-
                     <Row>
                       <Col>
                         <p className={styles.paragrapheRed}>
@@ -163,7 +163,6 @@ export default function Dashboard(props) {
                         </p>
                       </Col>
                     </Row>
-
                   )}
                 </Card>
               </Link>
