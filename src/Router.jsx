@@ -16,6 +16,7 @@ import DocSelect from "./components/profile-creation/DocSelect";
 import HealthBookWeight from "./components/Dashboard/HealthBook/HealthBookWeight";
 import HealthBookAppetite from "./components/Dashboard/HealthBook/HealthBookAppetite";
 import HealthBookMood from "./components/Dashboard/HealthBook/HealthBookMood";
+import DoctorDash from "./components/Doctor/DoctorDash";
 
 export default function MyRouter() {
   return (
@@ -39,6 +40,7 @@ export default function MyRouter() {
         <Route path="/HealthBookWeight" component={HealthBookWeight} />
         <Route path="/healthBookAppetite" component={HealthBookAppetite} />
         <Route path="/HealthBookMood" component={HealthBookMood} />
+        <Route path="/doctorDash" component={DoctorDash} />
         <Route exact path="/" component={OnboardingPres} />
       </Switch>
     </Router>
