@@ -6,6 +6,8 @@ import style from "./Connexion.module.css";
 import Axios from "axios";
 import { Fade } from "react-reveal";
 
+import styles from "./onboarding/onboarding.module.css";
+
 export default function Connexion() {
   const [lastname, setLastname] = useState("");
   const [firstname, setFirstname] = useState("");
@@ -34,15 +36,23 @@ export default function Connexion() {
       <Container style={{ marginTop: "30px" }}>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
-            <img className={style.logo} src={Squirrel} alt="logo Squicker" style={{  marginBottom: "20px" }}/>
-            <h1>Enregistrez-vous</h1>
+            <img
+              width="30%"
+              className={style.logo}
+              src={Squirrel}
+              alt="logo Squicker"
+              style={{ marginBottom: "20px" }}
+            />
+            <h2>Enregistrez-vous</h2>
             <p>
-              Bonjour, j'espère que vous allez bien aujourd'hui? Ne vous en
-              faites pas, vous enregistrez ne prendra que quelques secondes.
+              Bonjour, ne vous en faites pas, vous enregistrez ne prendra que
+              <b>quelques secondes</b>.
             </p>
             <Form onSubmit={postPatient}>
               <FormGroup>
-                <Label style={{ marginTop: "10px" }} for="Nom">Nom</Label>
+                <Label style={{ marginTop: "10px" }} for="Nom">
+                  Nom
+                </Label>
                 <Input
                   type="text"
                   name="name"
@@ -51,7 +61,9 @@ export default function Connexion() {
                 />
               </FormGroup>
               <FormGroup>
-                <Label style={{ marginTop: "10px" }} for="Prenom">Prenom</Label>
+                <Label style={{ marginTop: "10px" }} for="Prenom">
+                  Prenom
+                </Label>
                 <Input
                   type="text"
                   name="name"
@@ -59,7 +71,12 @@ export default function Connexion() {
                   placeholder="votre prenom"
                 />
               </FormGroup>
-              <button style={{ marginTop: "10px" }}  className="generalButton">S'ENREGISTRER</button>
+              <button
+                style={{ marginTop: "10px" }}
+                className={styles.generalButton}
+              >
+                S'ENREGISTRER
+              </button>
             </Form>
           </Col>
         </Row>

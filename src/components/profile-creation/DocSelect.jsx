@@ -3,6 +3,9 @@ import axios from "axios";
 import { Progress, Row, Col, Container, FormGroup } from "reactstrap";
 import { Redirect } from "react-router-dom";
 
+import styles from "./profile.module.css";
+import logo_simple from "../../img/logo_squicker.svg";
+
 import Fade from "react-reveal/Fade";
 import style from "./Sex.module.css";
 
@@ -48,11 +51,19 @@ export default function DocSelect() {
   return (
     <Container style={{ marginTop: "30px" }}>
       <Row>
+        <Col lg={{ size: 2, offset: 5 }}>
+          <img width="40%" src={logo_simple} alt="logo squicker" />
+        </Col>
+      </Row>
+      <Row>
         <Col lg={{ size: 6, offset: 3 }}>
-          <h6 style={{ textAlign: "center" }}>
-            Apres ca c'est fini!
-          </h6>
-          <Progress animated color="success" value={100} />
+          <h6 style={{ textAlign: "center" }}>Apres ca c'est fini!</h6>
+          <Progress
+            className={styles.progressBar}
+            animated
+            color="success"
+            value={100}
+          />
 
           <Fade right>
             <Container>
@@ -75,17 +86,20 @@ export default function DocSelect() {
                       >
                         {doctors.map((doc) => (
                           <option value={doc.uuid}>
-                            {doc.firstname} {doc.lastname}{" "}
+                            {doc.firstname} {doc.lastname}
                           </option>
                         ))}
                       </select>
                     </FormGroup>
-                    <Row>
+                    <Row className="my-4">
                       <Col
                         xs={{ size: 6, offset: 3 }}
                         md={{ size: 8, offset: 2 }}
                       >
-                        <button className={style.validate} onClick={postDoc}>
+                        <button
+                          className={style.generalButton}
+                          onClick={postDoc}
+                        >
                           Validez
                         </button>
                       </Col>
