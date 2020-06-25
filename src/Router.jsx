@@ -13,6 +13,7 @@ import HealthBook from "./components/Dashboard/HealthBook/HealthBook";
 import Rewards from "./components/Dashboard/Rewards";
 import HealthBookWeight from "./components/Dashboard/HealthBook/HealthBookWeight";
 import HealthBookMood from "./components/Dashboard/HealthBook/HealthBookMood";
+import DoctorDash from "./components/Doctor/DoctorDash";
 
 export default function MyRouter() {
   return (
@@ -31,6 +32,7 @@ export default function MyRouter() {
         <Route path="/rewards" component={Rewards} />
         <Route path="/HealthBookWeight" component={HealthBookWeight} />
         <Route path="/HealthBookMood" component={HealthBookMood} />
+        <Route path="/doctorDash" component={DoctorDash} />
       </Switch>
     </Router>
   );
