@@ -21,6 +21,8 @@ export default function HealthBookAppetite(props) {
       await Axios.put(`http://localhost:8000/dailyDatas/${DataUuid}`, {
         appetite,
       });
+      const uuid = window.localStorage.getItem("uuid");
+      await Axios.put(`http://localhost:8000/patients/${uuid}/click`)
       setCanGoToNextPage(true);
     } catch (err) {
       console.log(err);
