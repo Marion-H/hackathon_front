@@ -9,6 +9,7 @@ import OnboardingDash from "./components/onboarding/OnboardingDash";
 import OnboardingRecompense from "./components/onboarding/OnboardingRecompence";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Posologie from "./components/Dashboard/Posologie";
 import HealthBook from "./components/Dashboard/HealthBook/HealthBook";
 import Rewards from "./components/Dashboard/Rewards";
 import DocSelect from "./components/profile-creation/DocSelect";
@@ -32,6 +33,7 @@ export default function MyRouter() {
         <Route path="/etapeTrois" component={OnboardingRecompense} />
         <Route path="/etapeDeux" component={OnboardingDash} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/Posologie" component={Posologie} />
         <Route path="/healthBook" component={HealthBook} />
         <Route path="/rewards" component={Rewards} />
         <Route path="/HealthBookWeight" component={HealthBookWeight} />
