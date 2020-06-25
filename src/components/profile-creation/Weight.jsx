@@ -7,6 +7,7 @@ import {
   FormGroup,
   Label,
   Input,
+  Fade,
 } from "reactstrap";
 import { Redirect } from "react-router-dom";
 
@@ -37,36 +38,46 @@ export default function Weight() {
   }
 
   return (
-    <Container>
-      <h6 style={{ textAlign: "center", margin: 15 }}>
-        Encore un petit effort.
-      </h6>
-      <Progress animated color="warning" value={40} />
-      <Row>
-        <Col>
-          <Zoom>
-            <h3 style={{ textAlign: "center", margin: "20%" }}>
-              Quel est votre poids?
-            </h3>
-          </Zoom>
-        </Col>
-      </Row>
-      <FormGroup>
-        <Label for="weight">Entrez votre poids</Label>
-        <Input
-          type="number"
-          name="weight"
-          onChange={(e) => setWeight(e.target.value)}
-          placeholder="Kg"
-        />
-      </FormGroup>
-      <Row>
-        <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-          <button onClick={putWeight} className={style.validate}>
-            Validez
-          </button>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Container style={{ marginTop: "30px" }}>
+        <Row>
+          <Col lg={{ size: 6, offset: 3 }}>
+            <h6 style={{ textAlign: "center"}}>
+              Encore un petit effort.
+            </h6>
+            <Progress animated color="warning" value={40} />
+            <Fade right>
+              <Container>
+                <Row>
+                  <Col>
+                    <Zoom>
+                      <h3 style={{ textAlign: "center", margin: "20%" }}>
+                        Quel est votre poids?
+                      </h3>
+                    </Zoom>
+                  </Col>
+                </Row>
+                <FormGroup>
+                  <Label for="weight">Entrez votre poids</Label>
+                  <Input
+                    type="number"
+                    name="weight"
+                    onChange={(e) => setWeight(e.target.value)}
+                    placeholder="Kg"
+                  />
+                </FormGroup>
+                <Row>
+                  <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
+                    <button onClick={putWeight} className={style.validate}>
+                      Validez
+                    </button>
+                  </Col>
+                </Row>
+              </Container>
+            </Fade>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

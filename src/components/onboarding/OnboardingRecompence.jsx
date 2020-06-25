@@ -9,7 +9,7 @@ import { Fade } from "react-reveal";
 export default function OnboardingRecompense() {
   return (
     <Fade right>
-      <Container>
+      <Container style={{ marginTop: "30px" }}>
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
             <Row>
@@ -24,13 +24,13 @@ export default function OnboardingRecompense() {
             </Row>
             <Row>
               <Col>
-                <Link to="/connexion" className={styles.generalButton}>
-                  Créer un compte
+                <Link to="/etapeDeux" className={styles.lienSimple}>
+                  Retour
                 </Link>
               </Col>
               <Col>
-                <Link to="/etapeDeux" className={styles.lienSimple}>
-                  Retour
+                <Link to="/connexion" className={styles.generalButton}>
+                  Créer un compte
                 </Link>
               </Col>
             </Row>

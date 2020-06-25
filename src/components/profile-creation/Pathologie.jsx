@@ -29,56 +29,74 @@ export default function Pathologie() {
   }
 
   return (
-    <Container>
-      <h6 style={{ textAlign: "center", margin: 15 }}>
-        Encore un petit effort!
-      </h6>
-      <Progress animated color="success" value={85} />
-      <Fade right>
-        <Row>
-          <Col>
-            <h3 style={{ textAlign: "center", margin: "20%" }}>
-              Quel pathologie avez vous?
-            </h3>
-          </Col>
-        </Row>
+    <Container style={{ marginTop: "30px" }}>
+      <Row>
+        <Col lg={{ size: 6, offset: 3 }}>
+          <h6 style={{ textAlign: "center" }}>Ca y est, plus que celle la</h6>
+          <Progress animated color="success" value={100} />
 
-        <button
-          style={{ width: "45%", marginRight: "5vw" }}
-          onClick={() => setPathology("Diabete")}
-          className={pathology === "Diabete" ? style.buttonOn : style.buttonOff}
-        >
-          Diabète
-        </button>
+          <Fade right>
+            <Container>
+              <Fade right>
+                <Row>
+                  <Col>
+                    <h3 style={{ textAlign: "center", margin: "20%" }}>
+                      Quel pathologie avez vous?
+                    </h3>
+                  </Col>
+                </Row>
 
-        <button
-          style={{ width: "45%", marginRight: "5vw" }}
-          onClick={() => setPathology("Hypertension")}
-          className={
-            pathology === "Hypertension" ? style.buttonOn : style.buttonOff
-          }
-        >
-          Hypertension
-        </button>
+                <Col lg={{ size: 12, offset: 0 }}>
+                  <button
+                    style={{ width: "80%" }}
+                    onClick={() => setPathology("Diabete")}
+                    className={
+                      pathology === "Diabete" ? style.buttonOn : style.buttonOff
+                    }
+                  >
+                    Diabète
+                  </button>
+                </Col>
+                <Col lg={{ size: 12, offset: 0 }}>
+                  <button
+                    style={{ width: "80%", marginTop: "20px" }}
+                    onClick={() => setPathology("Hypertension")}
+                    className={
+                      pathology === "Hypertension"
+                        ? style.buttonOn
+                        : style.buttonOff
+                    }
+                  >
+                    Hypertension
+                  </button>
+                </Col>
 
-        <button
-          style={{ width: "45%", marginRight: "5vw" }}
-          onClick={() => setPathology("Apnée du sommeil")}
-          className={
-            pathology === "Apnée du sommeil" ? style.buttonOn : style.buttonOff
-          }
-        >
-          Apnée du sommeil
-        </button>
+                <Col lg={{ size: 12, offset: 0 }}>
+                  <button
+                    style={{ width: "80%", marginTop: "20px" }}
+                    onClick={() => setPathology("Apnée du sommeil")}
+                    className={
+                      pathology === "Apnée du sommeil"
+                        ? style.buttonOn
+                        : style.buttonOff
+                    }
+                  >
+                    Apnée du sommeil
+                  </button>
+                </Col>
 
-        <Row>
-          <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
-            <button onClick={putPathology} className={style.validate}>
-              Validez
-            </button>
-          </Col>
-        </Row>
-      </Fade>
+                <Row>
+                  <Col xs={{ size: 6, offset: 3 }} md={{ size: 8, offset: 2 }}>
+                    <button onClick={putPathology} className={style.validate}>
+                      Validez
+                    </button>
+                  </Col>
+                </Row>
+              </Fade>
+            </Container>
+          </Fade>
+        </Col>
+      </Row>
     </Container>
   );
 }
