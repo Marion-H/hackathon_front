@@ -9,6 +9,7 @@ import OnboardingDash from "./components/onboarding/OnboardingDash";
 import OnboardingRecompense from "./components/onboarding/OnboardingRecompence";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Rewards from "./components/Dashboard/Rewards";
 
 export default function MyRouter() {
   return (
@@ -23,6 +24,7 @@ export default function MyRouter() {
         <Route path="/etapeTrois" component={OnboardingRecompense} />
         <Route path="/connexion" component={Register} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/rewards" component={Rewards} />
       </Switch>
     </Router>
   );
