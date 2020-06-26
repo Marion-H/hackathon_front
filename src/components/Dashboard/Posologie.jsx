@@ -17,6 +17,11 @@ const MyTable = (props) => {
           md={{ size: "8", offset: 2 }}
           lg={{ size: "8", offset: 2 }}
         >
+          <Col>
+            <h2 className="text-center">Prescription</h2>
+            <p className="text-left"></p>
+          </Col>
+
           <Table bordered>
             <thead>
               <td>
