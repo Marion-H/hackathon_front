@@ -24,11 +24,8 @@ export default function Dashboard(props) {
   const DataUuid = window.sessionStorage.getItem("DataUuid");
   const [score, setScore] = useState(0);
 
-  // const { className } = props;
   useEffect(() => {
     getInfos();
-    makeAToast();
-    // scoreProgress(datas.score);
   }, []);
 
   const getInfos = async () => {
@@ -49,23 +46,6 @@ export default function Dashboard(props) {
       console.log(err);
     }
   };
-
-  const makeAToast = async () => {
-    try {
-      if (datas.score === 1) {
-        notify();
-      } else if (datas.score === 2) {
-        notify();
-      } else if (datas.score === 3) {
-        notify();
-      } else if (datas.score === 4) {
-        notify();
-      }
-    } catch (error) {
-      console.log("make a toast doesn t twerks");
-    }
-  };
-  const notify = () => toast("Wow so easy !");
 
   const toggle = () => setModal(!modal);
   return (
