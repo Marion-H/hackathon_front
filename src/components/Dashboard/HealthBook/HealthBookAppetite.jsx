@@ -8,6 +8,8 @@ import { GiBananaPeeled } from "react-icons/gi";
 
 import Axios from "axios";
 import style from "../../profile-creation/Sex.module.css";
+import styles from "./healthBook.module.css";
+import logo_simple from "../../../img/logo_squicker.svg";
 
 export default function HealthBookAppetite(props) {
   const [appetite, setAppetite] = useState(0);
@@ -22,7 +24,7 @@ export default function HealthBookAppetite(props) {
         appetite,
       });
       const uuid = window.localStorage.getItem("uuid");
-      await Axios.put(`http://localhost:8000/patients/${uuid}/click`)
+      await Axios.put(`http://localhost:8000/patients/${uuid}/click`);
       setCanGoToNextPage(true);
     } catch (err) {
       console.log(err);
@@ -36,11 +38,20 @@ export default function HealthBookAppetite(props) {
   return (
     <Container style={{ marginTop: "30px" }}>
       <Row>
+        <Col lg={{ size: 2, offset: 5 }}>
+          <img width="40%" src={logo_simple} alt="logo squicker" />
+        </Col>
+      </Row>
+      <Row>
         <Col lg={{ size: 6, offset: 3 }}>
-
           <Fade right>
             <Container style={{ marginTop: "20px" }}>
-              <Progress animated color="danger" value={50} />
+              <Progress
+                className={styles.progressBar}
+                animated
+                color="danger"
+                value={50}
+              />
 
               <Row>
                 <Col>
@@ -95,9 +106,12 @@ export default function HealthBookAppetite(props) {
                 </Col>
               </Row>
 
-              <Row>
+              <Row className="m-4">
                 <Col>
-                  <button onClick={putAppetite} className={style.validate}>
+                  <button
+                    onClick={putAppetite}
+                    className={styles.generalButton}
+                  >
                     Validez
                   </button>
                 </Col>
