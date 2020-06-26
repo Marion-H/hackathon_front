@@ -5,8 +5,11 @@ import { RiEmotionNormalLine } from "react-icons/ri";
 import { FiSmile } from "react-icons/fi";
 import { Progress, Row, Col, Container } from "reactstrap";
 import { Redirect } from "react-router-dom";
+
 import Axios from "axios";
 import style from "../../profile-creation/Sex.module.css";
+import styles from "./healthBook.module.css";
+import logo_simple from "../../../img/logo_squicker.svg";
 
 export default function HealthBookMood(props) {
   const [mood, setMood] = useState(0);
@@ -21,7 +24,7 @@ export default function HealthBookMood(props) {
         mood,
       });
       const uuid = window.localStorage.getItem("uuid");
-      await Axios.put(`http://localhost:8000/patients/${uuid}/click`)
+      await Axios.put(`http://localhost:8000/patients/${uuid}/click`);
       setCanGoToNextPage(true);
     } catch (err) {
       console.log(err);
@@ -35,10 +38,20 @@ export default function HealthBookMood(props) {
   return (
     <Container style={{ marginTop: "30px" }}>
       <Row>
+        <Col lg={{ size: 2, offset: 5 }}>
+          <img width="40%" src={logo_simple} alt="logo squicker" />
+        </Col>
+      </Row>
+      <Row>
         <Col lg={{ size: 6, offset: 3 }}>
           <Fade>
             <Container style={{ marginTop: "20px" }}>
-              <Progress animated color="danger" value={50} />
+              <Progress
+                className={styles.progressBar}
+                animated
+                color="danger"
+                value={50}
+              />
               <Fade right>
                 <Row>
                   <Col>
@@ -96,9 +109,9 @@ export default function HealthBookMood(props) {
                   </Col>
                 </Row>
 
-                <Row>
+                <Row className="m-4">
                   <Col>
-                    <button onClick={putMood} className={style.validate}>
+                    <button onClick={putMood} className={styles.generalButton}>
                       Validez
                     </button>
                   </Col>
