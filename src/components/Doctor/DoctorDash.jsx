@@ -7,8 +7,10 @@ import {
   Jumbotron,
   Button,
   Table,
+  Card,
 } from "reactstrap";
 import Axios from "axios";
+import styles from "../Dashboard/dashboard.module.css";
 
 export default function DoctorDash() {
   const [datas, setDatas] = useState([]);
@@ -21,7 +23,7 @@ export default function DoctorDash() {
 
   const getInfos = async () => {
     try {
-      const res = await Axios.get(`http://localhost:8000/patients/alldata`);
+      const res = await Axios.get(`http://localhost:8000/dailyDatas`);
       setDatas(res.data);
       setisLoading(false);
     } catch (err) {
@@ -34,21 +36,21 @@ export default function DoctorDash() {
         <p>loading</p>
       ) : (
         <Container>
-          <Row>
+          {/* <Row>
             {datas
-              .filter(
-                (patient) =>
-                  patient.DoctorUuid ===
-                    "c7092571-68b0-449b-af2d-05ed22a627dc" &&
-                  patient.dailyDatas[2]
-              )
-              .map((patient) => (
+              // .filter(
+              //   (patient) =>
+              //     patient.DoctorUuid ===
+              //       "c7092571-68b0-449b-af2d-05ed22a627dc" &&
+              //     patient.dailyDatas[2]
+              // )
+              .map((data) => (
                 <Col lg={{ size: 12, offset: 0 }}>
                   <Jumbotron>
                     <h1 className="display-3">
-                      {patient.lastname} {patient.firstname}
+                      {data.lastname} {data.firstname}
                     </h1>
-                    <h3 className="display-3">{patient.pathology}</h3>
+                    <h3 className="display-3">{data.pathology}</h3>
 
                     <Table>
                       <thead>
@@ -87,7 +89,46 @@ export default function DoctorDash() {
                   </Jumbotron>
                 </Col>
               ))}
-          </Row>
+          </Row> */}
+          {datas.map((data) => (
+            <Row>
+              <Col
+                xs={{ size: "12", offset: 0 }}
+                sm={{ size: "12", offset: 0 }}
+                md={{ size: "12", offset: 0 }}
+                lg={{ size: "12", offset: 0 }}
+              >
+                <Card
+                  className={`${styles.citationCard} ${styles.cardStyle1} mt-3`}
+                  style={{ height: "280px" }}
+                >
+                  <h2>{data.Patient.firstname} {data.Patient.lastname}</h2>
+                  <hr />
+                  <Row>
+                    <Col>
+                      <h6>
+                         <span style={{color: "grey"}}>bloodSugar</span> {data.bloodSugar}
+                      </h6>
+                      <h6>
+                         <span style={{color: "grey"}}>weight:</span> {data.weight}
+                      </h6>
+                      <h6>
+                         <span style={{color: "grey"}}>mood: </span> {data.mood}
+                      </h6>
+                      <h6>
+                         <span style={{color: "grey"}}>appetite:</span> {data.appetite}
+                      </h6>
+                    </Col>
+                    <Col>
+                      <h6>
+                        <span style={{color: "grey"}}>Date:</span> {data.createdAt.substring(0, 10)}
+                      </h6>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            </Row>
+          ))}
         </Container>
       )}
     </Fade>

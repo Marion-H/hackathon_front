@@ -38,9 +38,20 @@ export default function Dashboard(props) {
       const docUuid = res.data.DoctorUuid;
       console.log("docUuid ", docUuid);
 
-      // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
-      // setgetDoc(doc.data);
-      // console.log("key 2 ", doc.data);
+      const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
+      setgetDoc(doc.data);
+      console.log("key 2 ", doc.data);
+
+      // if (datas.score === 1) {
+      //   setScore(25);
+      // } else if (datas.score === 2) {
+      //   setScore(50);
+      // } else if (datas.score === 3) {
+      //   setScore(75);
+      // } else if (datas.score === 4) {
+      //   setScore(100);
+      // }
+
       setisLoading(false);
     } catch (err) {
       console.log(err);
@@ -78,14 +89,12 @@ export default function Dashboard(props) {
                     vous trouverez ici vos résultats envoyer à votre medecin
                     traitant Dr {}
                   </p>
-                </Col>
-                <Col className="align-self-center">
-                  <Progress animated color="warning" value={score} />
+                  <Progress animated color="warning" value={datas.score * 25} />
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className="pt-3">
             <Col
               xs={{ size: "12", offset: 0 }}
               sm={{ size: "12", offset: 0 }}
@@ -186,9 +195,14 @@ export default function Dashboard(props) {
             >
               <Link to="/rewards">
                 <Card
-                  className={`${styles.cardStyle1} ${styles.cardReward} justify-content-center mt-3`}
+                  className={`${styles.cardStyle1} ${styles.cardReward} align-items-center justify-content-center mt-3`}
                 >
-                  <img src={illuReward} alt="illustration récompenses" />
+                  <img
+                    width="100%"
+                    src={illuReward}
+                    alt="illustration récompenses"
+                  />
+                  <h2 className={styles.titreAbsolu}>Récompenses</h2>
                 </Card>
               </Link>
             </Col>
@@ -200,9 +214,14 @@ export default function Dashboard(props) {
             >
               <Link to="/posologie">
                 <Card
-                  className={`${styles.cardReward} ${styles.cardStyle1} mt-3`}
+                  className={`${styles.cardReward} ${styles.cardStyle1} justify-content-end align-items-center mt-3`}
                 >
-                  <img src={illuPosologie} alt="illustration posologie" />
+                  <img
+                    width="80%"
+                    src={illuPosologie}
+                    alt="illustration posologie"
+                  />
+                  <h2 className={styles.titreAbsolu}>Ordonnance</h2>
                 </Card>
               </Link>
             </Col>
