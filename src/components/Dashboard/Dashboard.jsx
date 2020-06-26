@@ -38,9 +38,21 @@ export default function Dashboard(props) {
       const docUuid = res.data.DoctorUuid;
       console.log("docUuid ", docUuid);
 
-      // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
-      // setgetDoc(doc.data);
-      // console.log("key 2 ", doc.data);
+      const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
+      setgetDoc(doc.data);
+      console.log("key 2 ", doc.data);
+
+      // if (datas.score === 1) {
+      //   setScore(25);
+      // } else if (datas.score === 2) {
+      //   setScore(50);
+      // } else if (datas.score === 3) {
+      //   setScore(75);
+      // } else if (datas.score === 4) {
+      //   setScore(100);
+      // }
+
+
       setisLoading(false);
     } catch (err) {
       console.log(err);
