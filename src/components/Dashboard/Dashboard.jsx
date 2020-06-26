@@ -52,9 +52,9 @@ export default function Dashboard(props) {
       const docUuid = res.data.DoctorUuid;
       console.log("docUuid ", docUuid);
 
-      // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
-      // setgetDoc(doc.data);
-      // console.log("key 2 ", doc.data);
+      const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
+      setgetDoc(doc.data);
+      console.log("key 2 ", doc.data);
 
       // if (datas.score === 1) {
       //   setScore(25);
