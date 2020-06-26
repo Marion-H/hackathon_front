@@ -126,10 +126,7 @@ export default function Dashboard(props) {
                                   style={{ opacity: "0.5", border: "solid" }}
                                 />
                               ) : (
-                                <FiSmile
-                                  size={60}
-                                  color={"#0596DE"}
-                                />
+                                <FiSmile size={60} color={"#0596DE"} />
                               )}
                             </Col>
                           </Row>
