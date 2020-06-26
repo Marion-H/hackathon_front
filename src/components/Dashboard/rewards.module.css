@@ -45,3 +45,19 @@
   padding: 10px;
   background-color: red;
 }
+
+.message{
+  font-style: italic;
+  font-size: 15px;
+}
+
+.message a{
+  font-size: 15px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.message a:hover{
+  text-decoration: none;
+  font-size: 15px;
+}
