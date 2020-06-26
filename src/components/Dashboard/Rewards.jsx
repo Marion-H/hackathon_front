@@ -60,10 +60,10 @@ const Rewards = () => {
                 </p>
               </Row>
               <Row className="bg-light my-3">
-                <Col>
+                <Col lg="6" xs="12">
                   <img width="100%" src={img_recompense} alt="spa" />
                 </Col>
-                <Col className="align-self-center">
+                <Col lg="6" xs="12" className="align-self-center">
                   <Container>
                     <h3>Spa Dune & eau</h3>
                     <p className="lead">
@@ -71,37 +71,45 @@ const Rewards = () => {
                       moment de détente !
                     </p>
                     {isDisabled ? (
-                         <button 
-                          disabled
-                          className={Styles.generalButtonDisabled}
+                      <button disabled className={Styles.generalButtonDisabled}>
+                        Utiliser le coupon
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          className={Styles.generalButton}
+                          onClick={toggle}
                         >
                           Utiliser le coupon
-                        </button> 
-                        ) : (
-                          <>
-                    <button className={Styles.generalButton} onClick={toggle}>
-                      Utiliser le coupon
-                    </button>
-                    <Modal isOpen={modal} toggle={toggle}>
-                      <ModalHeader toggle={toggle}>Code Promo</ModalHeader>
-                      <ModalBody>
-                        <h2>Squirel10</h2>
-                        <p className={Styles.message}>A utiliser sur le site internet <a href="https://www.duneeteau.fr/" target="_blank">Spa Dune et Eau</a></p>
-                      </ModalBody>
-                    </Modal>
-                     </>
+                        </button>
+                        <Modal isOpen={modal} toggle={toggle}>
+                          <ModalHeader toggle={toggle}>Code Promo</ModalHeader>
+                          <ModalBody>
+                            <h2>Squirel10</h2>
+                            <p className={Styles.message}>
+                              A utiliser sur le site internet{" "}
+                              <a
+                                href="https://www.duneeteau.fr/"
+                                target="_blank"
+                              >
+                                Spa Dune et Eau
+                              </a>
+                            </p>
+                          </ModalBody>
+                        </Modal>
+                      </>
                       // <button className={Styles.generalButton}>
                       //   Utiliser le coupon
                       // </button>
-                    )} 
+                    )}
                   </Container>
                 </Col>
               </Row>
               <Row className="bg-light my-3">
-                <Col>
+                <Col lg="6" xs="12">
                   <img width="100%" src={img_recompense} alt="spa" />
                 </Col>
-                <Col className="align-self-center">
+                <Col lg="6" xs="12" className="align-self-center">
                   <Container>
                     <h3>Spa Dune & eau</h3>
                     <p className="lead">
@@ -115,10 +123,10 @@ const Rewards = () => {
                 </Col>
               </Row>
               <Row className="bg-light my-3">
-                <Col>
+                <Col lg="6" xs="12">
                   <img width="100%" src={img_recompense} alt="Photo spa" />
                 </Col>
-                <Col className="align-self-center">
+                <Col lg="6" xs="12" className="align-self-center">
                   <Container>
                     <h3>Spa Dune & eau</h3>
                     <p className="lead">
