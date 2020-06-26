@@ -102,27 +102,26 @@ export default function DoctorDash() {
                   className={`${styles.citationCard} ${styles.cardStyle1} mt-3`}
                   style={{ height: "280px" }}
                 >
-                  <h2>{data.Patient.firstname}</h2>
+                  <h2>{data.Patient.firstname} {data.Patient.lastname}</h2>
                   <hr />
                   <Row>
                     <Col>
-                      {" "}
                       <h6>
-                        <span>bloodSugar</span> {data.bloodSugar}
+                         <span style={{color: "grey"}}>bloodSugar</span> {data.bloodSugar}
                       </h6>
                       <h6>
-                        <span>weight:</span> {data.weight}
+                         <span style={{color: "grey"}}>weight:</span> {data.weight}
                       </h6>
                       <h6>
-                        <span>mood: </span> {data.mood}
+                         <span style={{color: "grey"}}>mood: </span> {data.mood}
                       </h6>
                       <h6>
-                        <span>appetite:</span> {data.appetite}
+                         <span style={{color: "grey"}}>appetite:</span> {data.appetite}
                       </h6>
                     </Col>
                     <Col>
                       <h6>
-                        <span>Date:</span> {data.createdAt.substring(0, 10)}
+                        <span style={{color: "grey"}}>Date:</span> {data.createdAt.substring(0, 10)}
                       </h6>
                     </Col>
                   </Row>
