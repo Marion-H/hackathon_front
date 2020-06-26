@@ -52,7 +52,6 @@ export default function Dashboard(props) {
       //   setScore(100);
       // }
 
-
       setisLoading(false);
     } catch (err) {
       console.log(err);
@@ -90,7 +89,7 @@ export default function Dashboard(props) {
                     vous trouverez ici vos résultats envoyer à votre medecin
                     traitant Dr {}
                   </p>
-                  <Progress animated color="warning" value={score} />
+                  <Progress animated color="warning" value={datas.score * 25} />
                 </Col>
               </Row>
             </Col>
