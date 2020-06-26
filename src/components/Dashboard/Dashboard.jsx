@@ -52,7 +52,6 @@ export default function Dashboard(props) {
       //   setScore(100);
       // }
 
-
       setisLoading(false);
     } catch (err) {
       console.log(err);
@@ -88,9 +87,9 @@ export default function Dashboard(props) {
                     </span>
                     <br />
                     vous trouverez ici vos résultats envoyer à votre medecin
-                    traitant Dr {}
+                    traitant Dr {getDoc.firstname}
                   </p>
-                  <Progress animated color="warning" value={score} />
+                  <Progress animated color="warning" value={datas.score * 25} />
                 </Col>
               </Row>
             </Col>
@@ -111,7 +110,11 @@ export default function Dashboard(props) {
                     <div className="p-2">
                       <Row>
                         <Col lg={{ size: 3, offset: 9 }}>
-                          <img src={illuCheck} alt="illustration check" />
+                          <img
+                            width="80%"
+                            src={illuCheck}
+                            alt="illustration check"
+                          />
                         </Col>
                       </Row>
                       <Row>
@@ -156,6 +159,8 @@ export default function Dashboard(props) {
                             </Col>
                           </Row>
                         </Col>
+                      </Row>
+                      <Row>
                         <Col className="align-self-center">
                           <Row>
                             <Col>
