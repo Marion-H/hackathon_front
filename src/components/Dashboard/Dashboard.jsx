@@ -38,9 +38,9 @@ export default function Dashboard(props) {
       const docUuid = res.data.DoctorUuid;
       console.log("docUuid ", docUuid);
 
-      const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
-      setgetDoc(doc.data);
-      console.log("key 2 ", doc.data);
+      // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
+      // setgetDoc(doc.data);
+      // console.log("key 2 ", doc.data);
       setisLoading(false);
     } catch (err) {
       console.log(err);
@@ -122,11 +122,14 @@ export default function Dashboard(props) {
                               ) : datas.dailyDatas[0].mood === 2 ? (
                                 <RiEmotionNormalLine
                                   size={60}
-                                  color={"red"}
+                                  color={"orange"}
                                   style={{ opacity: "0.5", border: "solid" }}
                                 />
                               ) : (
-                                <FiSmile size={60} color={"#0596DE"} />
+                                <FiSmile
+                                  size={60}
+                                  color={"#0596DE"}
+                                />
                               )}
                             </Col>
                           </Row>
