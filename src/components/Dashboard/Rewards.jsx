@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Col, Row } from "reactstrap";
+import { Container, Col, Row, Modal, ModalHeader, ModalBody } from "reactstrap";
 
 import Styles from "./rewards.module.css";
 
@@ -11,11 +11,14 @@ import Axios from "axios";
 const Rewards = () => {
   const [isLoading, setisLoading] = useState(true);
   const [datas, setDatas] = useState([]);
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   useEffect(() => {
     getInfos();
-    getDisabled(datas)
+    getDisabled(datas);
   });
 
   const getInfos = async () => {
@@ -29,13 +32,12 @@ const Rewards = () => {
     }
   };
 
-  const getDisabled= (scorePatient) =>{
-    if (scorePatient === 4){
-      setIsDisabled(false)
+  const getDisabled = (scorePatient) => {
+    if (scorePatient === 4) {
+      setIsDisabled(false);
     }
-  }
+  };
 
-  
   return (
     <div>
       {isLoading ? (
@@ -59,7 +61,7 @@ const Rewards = () => {
               </Row>
               <Row className="bg-light my-3">
                 <Col>
-                  <img width="100%" src={img_recompense} alt="Photo spa" />
+                  <img width="100%" src={img_recompense} alt="spa" />
                 </Col>
                 <Col className="align-self-center">
                   <Container>
@@ -69,21 +71,35 @@ const Rewards = () => {
                       moment de détente !
                     </p>
                     {isDisabled ? (
-                      <button disabled className={Styles.generalButtonDisabled}>
-                        Utiliser le coupon
-                      </button>
-                    ) : (
-                      <button className={Styles.generalButton}>
-                        Utiliser le coupon
-                      </button>
-                    )}
-                    
+                         <button 
+                          disabled
+                          className={Styles.generalButtonDisabled}
+                        >
+                          Utiliser le coupon
+                        </button> 
+                        ) : (
+                          <>
+                    <button className={Styles.generalButton} onClick={toggle}>
+                      Utiliser le coupon
+                    </button>
+                    <Modal isOpen={modal} toggle={toggle}>
+                      <ModalHeader toggle={toggle}>Code Promo</ModalHeader>
+                      <ModalBody>
+                        <h2>Squirel10</h2>
+                        <p className={Styles.message}>A utiliser sur le site internet <a href="https://www.duneeteau.fr/" target="_blank">Spa Dune et Eau</a></p>
+                      </ModalBody>
+                    </Modal>
+                     </>
+                      // <button className={Styles.generalButton}>
+                      //   Utiliser le coupon
+                      // </button>
+                    )} 
                   </Container>
                 </Col>
               </Row>
               <Row className="bg-light my-3">
                 <Col>
-                  <img width="100%" src={img_recompense} alt="spa"/>
+                  <img width="100%" src={img_recompense} alt="spa" />
                 </Col>
                 <Col className="align-self-center">
                   <Container>
