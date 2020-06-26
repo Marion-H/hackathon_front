@@ -38,9 +38,17 @@
 }
 
 .citationCard {
-  height: 200px;
   border-radius: 10px;
   background-color: rgba(5, 150, 222, 0.4) !important;
+}
+
+.titreAbsolu {
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  top: 5px;
 }
 
 .moduleDoc {

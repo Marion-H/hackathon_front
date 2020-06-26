@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Progress,
-  Toast,
-  ToastHeader,
-  ToastBody,
-} from "reactstrap";
+import { Container, Row, Col, Card, Progress } from "reactstrap";
 import Citations from "./Citations";
 import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
-
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import DoctorData from "./DoctorData";
 import { Link } from "react-router-dom";
@@ -39,9 +27,7 @@ export default function Dashboard(props) {
   // const { className } = props;
   useEffect(() => {
     getInfos();
-    if (datas.score === 4) {
-      return toast("Wow so easy !");
-    }
+    scoreProgress(datas.score);
   }, []);
 
   const getInfos = async () => {
@@ -55,33 +41,31 @@ export default function Dashboard(props) {
       // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
       // setgetDoc(doc.data);
       // console.log("key 2 ", doc.data);
-
-      // if (datas.score === 1) {
-      //   setScore(25);
-      // } else if (datas.score === 2) {
-      //   setScore(50);
-      // } else if (datas.score === 3) {
-      //   setScore(75);
-      // } else if (datas.score === 4) {
-      //   setScore(100);
-      // }
-
       setisLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
 
+  const scoreProgress = (scorePatient) => {
+    if (scorePatient === 1) {
+      setScore(25);
+    } else if (scorePatient === 2) {
+      setScore(50);
+    } else if (scorePatient === 3) {
+      setScore(75);
+    } else if (scorePatient === 4) {
+      setScore(100);
+    }
+  };
+
   const toggle = () => setModal(!modal);
-  const notify = () => toast("Wow so easy !");
   return (
     <Fade>
       {isLoading ? (
         <p>loading</p>
       ) : (
         <Container>
-          {" "}
-          <ToastContainer />
           <Row>
             <Col lg={{ size: "8", offset: 2 }}>
               <Row>
@@ -94,14 +78,12 @@ export default function Dashboard(props) {
                     vous trouverez ici vos résultats envoyer à votre medecin
                     traitant Dr {}
                   </p>
-                </Col>
-                <Col className="align-self-center">
-                  <Progress animated color="warning" value={datas.score * 25} />
+                  <Progress animated color="warning" value={score} />
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className="pt-3">
             <Col
               xs={{ size: "12", offset: 0 }}
               sm={{ size: "12", offset: 0 }}
@@ -192,6 +174,7 @@ export default function Dashboard(props) {
               </Link>
             </Col>
           </Row>
+
           <Row>
             <Col
               xs={{ size: "6", offset: 0 }}
@@ -201,9 +184,14 @@ export default function Dashboard(props) {
             >
               <Link to="/rewards">
                 <Card
-                  className={`${styles.cardStyle1} ${styles.cardReward} justify-content-center mt-3`}
+                  className={`${styles.cardStyle1} ${styles.cardReward} align-items-center justify-content-center mt-3`}
                 >
-                  <img src={illuReward} alt="illustration récompenses" />
+                  <img
+                    width="100%"
+                    src={illuReward}
+                    alt="illustration récompenses"
+                  />
+                  <h2 className={styles.titreAbsolu}>Récompenses</h2>
                 </Card>
               </Link>
             </Col>
@@ -215,9 +203,14 @@ export default function Dashboard(props) {
             >
               <Link to="/posologie">
                 <Card
-                  className={`${styles.cardReward} ${styles.cardStyle1} mt-3`}
+                  className={`${styles.cardReward} ${styles.cardStyle1} justify-content-end align-items-center mt-3`}
                 >
-                  <img src={illuPosologie} alt="illustration posologie" />
+                  <img
+                    width="80%"
+                    src={illuPosologie}
+                    alt="illustration posologie"
+                  />
+                  <h2 className={styles.titreAbsolu}>Ordonnance</h2>
                 </Card>
               </Link>
             </Col>
