@@ -21,7 +21,7 @@ export default function DoctorDash() {
 
   const getInfos = async () => {
     try {
-      const res = await Axios.get(`http://localhost:8000/patients/alldata`);
+      const res = await Axios.get(`http://localhost:8000/patients`);
       setDatas(res.data);
       setisLoading(false);
     } catch (err) {

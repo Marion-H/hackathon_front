@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Progress } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Progress,
+  Toast,
+  ToastHeader,
+  ToastBody,
+} from "reactstrap";
 import Citations from "./Citations";
 import Fade from "react-reveal/Fade";
 import styles from "./dashboard.module.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import DoctorData from "./DoctorData";
 import { Link } from "react-router-dom";
@@ -27,7 +39,9 @@ export default function Dashboard(props) {
   // const { className } = props;
   useEffect(() => {
     getInfos();
-    scoreProgress(datas.score);
+    if (datas.score === 4) {
+      return toast("Wow so easy !");
+    }
   }, []);
 
   const getInfos = async () => {
@@ -41,31 +55,33 @@ export default function Dashboard(props) {
       // const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
       // setgetDoc(doc.data);
       // console.log("key 2 ", doc.data);
+
+      // if (datas.score === 1) {
+      //   setScore(25);
+      // } else if (datas.score === 2) {
+      //   setScore(50);
+      // } else if (datas.score === 3) {
+      //   setScore(75);
+      // } else if (datas.score === 4) {
+      //   setScore(100);
+      // }
+
       setisLoading(false);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const scoreProgress = (scorePatient) => {
-    if (scorePatient === 1) {
-      setScore(25);
-    } else if (scorePatient === 2) {
-      setScore(50);
-    } else if (scorePatient === 3) {
-      setScore(75);
-    } else if (scorePatient === 4) {
-      setScore(100);
-    }
-  };
-
   const toggle = () => setModal(!modal);
+  const notify = () => toast("Wow so easy !");
   return (
     <Fade>
       {isLoading ? (
         <p>loading</p>
       ) : (
         <Container>
+          {" "}
+          <ToastContainer />
           <Row>
             <Col lg={{ size: "8", offset: 2 }}>
               <Row>
@@ -80,7 +96,7 @@ export default function Dashboard(props) {
                   </p>
                 </Col>
                 <Col className="align-self-center">
-                  <Progress animated color="warning" value={score} />
+                  <Progress animated color="warning" value={datas.score * 25} />
                 </Col>
               </Row>
             </Col>
@@ -126,10 +142,7 @@ export default function Dashboard(props) {
                                   style={{ opacity: "0.5", border: "solid" }}
                                 />
                               ) : (
-                                <FiSmile
-                                  size={60}
-                                  color={"#0596DE"}
-                                />
+                                <FiSmile size={60} color={"#0596DE"} />
                               )}
                             </Col>
                           </Row>
@@ -179,7 +192,6 @@ export default function Dashboard(props) {
               </Link>
             </Col>
           </Row>
-
           <Row>
             <Col
               xs={{ size: "6", offset: 0 }}
