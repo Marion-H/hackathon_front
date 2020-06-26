@@ -24,10 +24,8 @@ export default function Dashboard(props) {
   const DataUuid = window.sessionStorage.getItem("DataUuid");
   const [score, setScore] = useState(0);
 
-  // const { className } = props;
   useEffect(() => {
     getInfos();
-    scoreProgress(datas.score);
   }, []);
 
   const getInfos = async () => {
@@ -35,38 +33,17 @@ export default function Dashboard(props) {
       const uuid = window.localStorage.getItem("uuid");
       const res = await Axios.get(`http://localhost:8000/patients/${uuid}`);
       setDatas(res.data);
+      console.log(res.data);
+
       const docUuid = res.data.DoctorUuid;
       console.log("docUuid ", docUuid);
-
       const doc = await Axios.get(`http://localhost:8000/doctors/${docUuid}`);
       setgetDoc(doc.data);
       console.log("key 2 ", doc.data);
 
-      // if (datas.score === 1) {
-      //   setScore(25);
-      // } else if (datas.score === 2) {
-      //   setScore(50);
-      // } else if (datas.score === 3) {
-      //   setScore(75);
-      // } else if (datas.score === 4) {
-      //   setScore(100);
-      // }
-
       setisLoading(false);
     } catch (err) {
       console.log(err);
-    }
-  };
-
-  const scoreProgress = (scorePatient) => {
-    if (scorePatient === 1) {
-      setScore(25);
-    } else if (scorePatient === 2) {
-      setScore(50);
-    } else if (scorePatient === 3) {
-      setScore(75);
-    } else if (scorePatient === 4) {
-      setScore(100);
     }
   };
 
