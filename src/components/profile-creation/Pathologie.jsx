@@ -44,7 +44,7 @@ export default function Pathologie() {
             className={styles.progressBar}
             animated
             color="success"
-            value={100}
+            value={90}
           />
 
           <Fade right>
